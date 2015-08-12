@@ -1,5 +1,5 @@
 <?php
-require 'config.php'
+require 'config.php';
 $dbc = new PDO('mysql:host=127.0.0.1;dbname=wineseller', 'wineseller_ao','');
 $dbc->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 echo $dbc->getAttribute(PDO::ATTR_CONNECTION_STATUS) . "\n";
