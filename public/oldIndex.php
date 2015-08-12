@@ -2,7 +2,8 @@
 <?php
 
 require_once 'AdModelWineseller.php';
-require
+require '';
+
 //require_once 'ParksDBmodel.php';
 
 
@@ -58,18 +59,60 @@ $offset = 0;
 $ads = ad::all();
 
 
-
 ?>
+
+
+
+<!DOCTYPE html>
 
 <html>
 <head>
-	<title>National Parks List</title>
-	 <link rel="stylesheet" href="/css/bootstrap.css">
+	<title>Welcome To The Wine Seller</title>
+
+</head>
+<p><h2>Welcome To The Wine Seller</h2></p>
+
 </head>
 <body>
 
+<div class='Wine'>Wine</div>
+<!--picture-->
+<div class ="Glassware">Glassware</div>
+<!--picture-->
+<div class ="Accessories">Accessories</div>
+<!--picture-->
+<div class ="Featured Listings">Featured Listings</div>
+<!--pictures in a carosel?-->
+
+<div>
+<!--Search Box-->
+<p> Looking for something Specific? </p>
+		<form method="POST" action="ads.show.php">
+        <label for="Search">Search</label>
+        <input id="Search" name="Search" type="text">
+<p> In </p>
+    	<form method="POST" action="ads.show.php">
+        <label for="Location">Location</label>
+        <input id="Location" name="Location" type="text">
+</div>
+
+<button type="submit" class="btn btn-primary">Search The Cellar</button>
+
+<div class = "Most_Popular">Most Popular Items</div>
+	<label for="Most_popular">Select your transmission type: </label>
+<select id="transmission" name="transmission">
+    <option>Automatic</option>
+    <option>Manual</option>
+</select>
+
+
+<div class = "Lucky">I'm Feeling Lucky</div>
+<div class = "New_Arrivals">New Arrivals</div>
+
+
+
 <div class="container">
-	<h1>National Parks</h1>
+	<h1>Wine Seller</h1>
 
 <?php foreach($errors as $error):?>
 	<p><?php echo $error; ?></p>
@@ -119,7 +162,7 @@ $ads = ad::all();
 <div class="container">
 	<h1>Make A New Ad</h1>
 	<h3><?= $errorMessage ?></h3>
-	<form  class="form-horizontal" method="POST" action="national_parks.php">
+	<form  class="form-horizontal" method="POST" action=".php">
 		<div class="form-group">
     		<label for="vendor_name" class="col-sm-2 control-label">Vendor Name</label>
     			<div class="col-sm-10">
@@ -162,7 +205,7 @@ $ads = ad::all();
       				<input type="textarea" class="form-control" name="Description" id="Description" placeholder="Enter Description">
     			</div>
     	</div>
-    	<button type="submit" class="btn btn-primary">Add New Park</button>
+    	<button type="submit" class="btn btn-primary">Add New Ad listing</button>
 	</form>
 </div>
 </body>
