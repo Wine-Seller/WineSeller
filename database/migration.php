@@ -1,17 +1,18 @@
 <?php
 require_once 'config.php';
 
-$dbc = new PDO('mysql:host=127.0.0.1;dbname=wineseller', 'wineseller_ao','');
+$dbc = new PDO('mysql:host=127.0.0.1;dbname=wineseller', 'wineseller_ao', '');
 $dbc->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 echo $dbc->getAttribute(PDO::ATTR_CONNECTION_STATUS) . "\n";
 
-$dropTable = 'DROP TABLE IF EXISTS wineseller';
+$dropTable = 'DROP TABLE IF EXISTS ads';
 
-$query = "wineseller";
+/*$query = "wineseller";*/
+/*$dbc->exec($query);*/
 
-$dbc->exec($query);
+$dbc->exec($dropTable);
 
-$createTable = "CREATE TABLE products (
+$createTable = "CREATE TABLE ads (
     id INT UNSIGNED NOT NULL AUTO_INCREMENT,
     vendor_name VARCHAR(100) NOT NULL,
     location_city_code VARCHAR(100) NOT NULL,
