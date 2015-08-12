@@ -1,17 +1,17 @@
 <?php
-require 'config.php';
+require_once 'config.php';
+
 $dbc = new PDO('mysql:host=127.0.0.1;dbname=wineseller', 'wineseller_ao','');
 $dbc->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 echo $dbc->getAttribute(PDO::ATTR_CONNECTION_STATUS) . "\n";
 
+$dropTable = 'DROP TABLE IF EXISTS wineseller';
 
-
-
-'DROP table IF EXISTS wineseller';
 $query = "wineseller";
+
 $dbc->exec($query);
 
-CREATE TABLE products (
+$createTable = "CREATE TABLE products (
     id INT UNSIGNED NOT NULL AUTO_INCREMENT,
     vendor_name VARCHAR(100) NOT NULL,
     location_city_code VARCHAR(100) NOT NULL,
@@ -24,4 +24,4 @@ CREATE TABLE products (
     Price CHAR(255)NOT NULL,
     description VARCHAR(100) NOT NULL,
     PRIMARY KEY (id),
-);
+)";
