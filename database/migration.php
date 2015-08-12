@@ -1,7 +1,7 @@
 <?php
 require_once 'config.php';
 
-$dbc = new PDO('mysql:host=127.0.0.1;dbname=wineseller', 'wineseller_ao', '');
+$dbc = new PDO('mysql:host=127.0.0.1;dbname=wineseller_db', 'wineseller_ao', '');
 $dbc->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 echo $dbc->getAttribute(PDO::ATTR_CONNECTION_STATUS) . "\n";
 
