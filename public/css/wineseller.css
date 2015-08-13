@@ -1,0 +1,48 @@
+.cat-list {
+	color: white;
+}
+.intro {
+	background-image: url("img/winesellerLogo.png");
+	background-size: 20%;
+	background-position: top-left;
+	background-repeat: no-repeat;
+}
+.main-container {
+	background-image: url("filterEffectsWineCellar.png");
+	background-size: 100%;
+	background-repeat: no-repeat;
+	background-position: right top;
+    margin-right: 200px;
+	margin: 3em;
+	background-size: 60%;
+}
+body {
+	background-image: url("brickwall.png");
+	background-size: 100%;
+	/*background-color: #722f37;*/
+	color: #darkgrey;
+/*	B7AFA3;
+*/}
+.intro {
+	font-size: 3em;
+	font-style: bold;
+	color: #4F2412;
+	background-color: #F2E7D2;
+	border: 0.25em solid #b29366;
+
+	/*background-color: #988A7F;*/
+/*	background-color: #F2E7D2;
+*/
+/*#F2E7D2
+*/
+	/*#44413C*/
+}
+.btn {
+	background-color: #722f37;
+	border-color: darkgrey;
+}
+.cat-title {
+	color: #b29366;
+}
+
+
