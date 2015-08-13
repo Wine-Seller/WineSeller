@@ -1,13 +1,15 @@
+
 .cat-list {
 	color: white;
 }
 .header {
+
 	background-image: url("img/winesellerLogo.png");
 	background-size: 20%;
 	background-position: top-left;
 	background-repeat: no-repeat;
 }
-.main-container {
+.container {
 	background-image: url("filterEffectsWineCellar.png");
 	background-size: 100%;
 	background-repeat: no-repeat;
@@ -19,6 +21,7 @@
 body {
 	background-image: url("brickwall.png");
 	background-size: 100%;
+	margin: 3em;
 	/*background-color: #722f37;*/
 	color: #darkgrey;
 /*	B7AFA3;
