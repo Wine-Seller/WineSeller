@@ -18,9 +18,9 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">What Would You Like To Do?<span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">View the Cellar</a></li>
-            <li><a href="#">Ad an item to the cellar</a></li>
-            <li><a href="#">Become A Member To the Celler</a></li>
+            <li><a href="../../../public/adsWineseller.index.php">View the Cellar</a></li>
+            <li><a href="../public/adswineseller.create.php">Ad an item to the cellar</a></li>
+            <li><a href="../public/users.create.php">Become A Member To the Celler</a></li>
             <li role="separator" class="divider"></li>
           </ul>
         </li>

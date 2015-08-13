@@ -1,4 +1,9 @@
-.logo {
+
+.cat-list {
+	color: white;
+}
+.header {
+
 	background-image: url("img/winesellerLogo.png");
 	background-size: 20%;
 	background-position: top-left;

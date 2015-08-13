@@ -3,6 +3,7 @@
 <head>
 <h1>Welcome To the Wine Seller!</h1>
   <div class="header">
+  	<link rel="stylesheet" type="text/css" href="../public/css/wineseller.css">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">

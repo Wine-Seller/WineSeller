@@ -9,18 +9,18 @@
     <title>Welcome To The Wine Seller</title>
 
 </head>
+
 <?php include ("../views/partials/header.php");?>
 <?php include ("../views/partials/navbar.php");?>
-
-
-
-
 
 <link rel="stylesheet" href="../css/wineseller.css">
 <link rel="stylesheet" href="bootstarp.css">
 <link rel="stylesheet" href="bootstarp.min.css">
+
 </head>
 <body>
+
+<li><a href="/adsWineseller.index.php">View the Cellar</a></li>
 
 <a href="something.css">Wine</a>
 <a href="something.css">Glassware</a>
