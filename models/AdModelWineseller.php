@@ -82,7 +82,7 @@ class Ad extends Model {
 		self::dbConnect();
 	}
 
-	public function update()
+	public function update() 
 	// @TODO: After insert, add the id back to the attributes array so the object can properly reflect the id
 /*array_unshift() — Prepend one or more elements to the beginning of an array
 */    // @TODO: You will need to iterate through all the attributes to build the prepared query

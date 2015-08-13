@@ -1,27 +1,39 @@
 <?php
-require 'config.php'
-$dbc = new PDO('mysql:host=127.0.0.1;dbname=wineseller', 'wineseller_ao','');
+
+/*Fatal error: require_once(): Failed opening required '/database/db_connect.php' 
+(include_path='.:/usr/share/php:/usr/share/pear') in /vagrant/sites/wineseller.dev/database/migration.php on line 2
+*/
+require_once '../database/db_connect.php';
+
+$dbc = new PDO('mysql:host=127.0.0.1;dbname=wineseller', 'wineseller_JB', '');
 $dbc->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 echo $dbc->getAttribute(PDO::ATTR_CONNECTION_STATUS) . "\n";
 
+$dropTable = 'DROP TABLE IF EXISTS ads';
 
+/*$query = "wineseller";*/
+/*$dbc->exec($query);*/
 
+$dbc->exec($dropTable);
 
-'DROP table IF EXISTS wineseller';
-$query = "wineseller";
-$dbc->exec($query);
-
-CREATE TABLE products (
+/*Create the query and assign to var*/
+$createTable = "CREATE TABLE ads (
     id INT UNSIGNED NOT NULL AUTO_INCREMENT,
-    vendor_name VARCHAR(100) NOT NULL,
-    location_city_code VARCHAR(100) NOT NULL,
-    state VARCHAR(100) NOT NULL,
-    zip INT(100) NOT NULL,
-    Product_Category VARCHAR(100) NOT NULL,
-    prtoduct_style  VARCHAR(100) NOT NULL,
-    Product origin DECIMAL(10,2)NOT NULL,
-    vintage_date DATE,
-    Price CHAR(255)NOT NULL,
-    description VARCHAR(100) NOT NULL,
-    PRIMARY KEY (id),
-);
+    vendor_name VARCHAR(100),
+    location_city_code VARCHAR(100),
+    location_state_code VARCHAR(100),
+    location_zip_code VARCHAR(100),
+    product_category VARCHAR(100),
+    product_style  VARCHAR(100),
+    product_origin VARCHAR(100),
+    vintage_date INT,
+    price DOUBLE(10, 2),
+    description TEXT,
+    image_url VARCHAR(100),
+    PRIMARY KEY (id)
+)";
+
+$dbc->exec($createTable);
+
+?>
+
