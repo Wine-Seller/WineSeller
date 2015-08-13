@@ -1,9 +1,10 @@
 <?php
-/*Your Auth.php file will need to require_once your Log.php file*/
-/*create a class called Auth. */ 
-require_once '../InputWineseller.php';
-require_once '../LogWineseller.php';
+/*clicking on login links to this login authorization page*/
+require_once '../utils/InputWineseller.php';
+require_once '../LoggerWineseller.php';
+require_once '../bootstrap.php';
 
+/*create a class called Auth. */ 
 class Auth
 {
 	public static $password = '$2y$10$SLjwBwdOVvnMgWxvTI4Gb.YVcmDlPTpQystHMO2Kfyi/DS8rgA0Fm';

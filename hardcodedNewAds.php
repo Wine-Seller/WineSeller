@@ -1,15 +1,3 @@
-<?php
-
-/*listing of all ads*/
-/*in the ads.index.php file, you should have a listing of 3-5 hard-coded sample ads*/
-
-require_once '../models/AdModelWineseller.php';
-require_once '../bootstrap.php';
-   
-/*class example*/
-/*$search = Input::get('search');
-$ads = Ad::categorySearch($search);*/
-
 $adsList = [
     [
         'vendor_name'           => 'Bending Branch Winery',
@@ -70,60 +58,3 @@ $adsList = [
     ],
 
 ];
-
-$ads = Ad::all();
-
-?>
-
-<!-- display results in html -->
-
-<html>
-<head>
-	<title>Wineseller Ads List</title>
-	 <link rel="stylesheet" href="bootstrap.css">
-</head>
-<body>
-
-<div class="container">
-	<h1>Index Listing Wineseller Ads</h1>
-
-<!-- On each page load, retrieve and display all records from the database
-skipping description and vendor city/state to avoid lengthy records -->	
-
-<!-- On each page load, retrieve and display all records from the database -->
-
-	<? foreach($ads as $ad): ?>
-		
-		<tr>
-			<td><?= $ad['vendor_name']; ?></td>
-			<td><?= $ad['location_city_code']; ?></td>
-			<td><?= $ad['location_state_code']; ?></td>
-			<td><?= $ad['location_zip_code']; ?></td>
-			<td><?= $ad['product_category']; ?></td>
-			<td><?= $ad['product_style']; ?></td>
-			<td><?= $ad['product_origin']; ?></td>
-			<td><?= $ad['vintage_date']; ?></td>
-			<td><?= $ad['price']; ?></td>
-			<td><?= $ad['description']; ?></td>
-            <td><?= $ad['image_url']; ?></td>
-		</tr>
-
-	<?php endforeach; ?>
-	
-</div>
-
-<div class="table-responsive">
-	<table class="table table-hover">
-		<tr>
-			<th>Vendor Name</strong></th>
-			<th>Vendor Location: Zip Code</strong></th>
-			<th>Product Category</strong></th>
-			<th>Product Origin</strong></th>
-			<th>Product Style</strong></th>
-			<th>Vintage Year</strong></th>
-			<th>Price</strong></th>
-		</tr>	
-	</table>
-
-</body>
-</html>
