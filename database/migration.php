@@ -1,8 +1,7 @@
 <?php
 
-/*Fatal error: require_once(): Failed opening required '/database/db_connect.php' 
-(include_path='.:/usr/share/php:/usr/share/pear') in /vagrant/sites/wineseller.dev/database/migration.php on line 2
-*/
+
+/*require_once '../bootstrap.php';*/
 require_once '../database/db_connect.php';
 
 $dbc = new PDO('mysql:host=127.0.0.1;dbname=wineseller', 'wineseller_JB', '');
