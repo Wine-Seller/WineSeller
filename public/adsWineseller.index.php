@@ -106,6 +106,7 @@ skipping description and vendor city/state to avoid lengthy records -->
 			<td><?= $ad['vintage_date']; ?></td>
 			<td><?= $ad['price']; ?></td>
 			<td><?= $ad['description']; ?></td>
+            <td><?= $ad['image_url']; ?></td>
 		</tr>
 
 	<?php endforeach; ?>

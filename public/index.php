@@ -2,9 +2,8 @@
 <?php
 
 require_once 'AdModelWineseller.php';
-require
-//require_once 'ParksDBmodel.php';
-
+require_once 'UserModelWineseller.php';
+require_once '../bootstrap.php';
 
 $input = Input::get('page');
 
@@ -19,16 +18,17 @@ if(!empty($_POST)) {
 		Input::has('state') &&
 		Input::has('zip') && 
 		Input::has('product_category') &&
-		Input::has('Prduct_style')&&
-		Input::has('Product_origin')&&
+		Input::has('product_style')&&
+		Input::has('product_origin')&&
 		Input::has('vintage_date')&&
-		Input::has('Price')&&
-		Input::has('Description');
+		Input::has('price')&&
+		Input::has('description')&&
+		Input::has('image_url');
 	
 
 	) {
-		$insertStmt = $dbc->prepare('INSERT INTO wineseller (vendor_name,location_city_code, state,zip,product_category, Prduct_style, Product_origin, vintage_date,Price,Description)
-									VALUES (:vendor_name,:location_city_code, :state,:zip, :product_category :Prduct_style, :Product_origin, :vintage_date,:Price,:Description)');
+		$insertStmt = $dbc->prepare('INSERT INTO ads (vendor_name,location_city_code, state,zip,product_category, product_style, product_origin, vintage_date, price, description, image_url)
+									VALUES (:vendor_name,:location_city_code, :state,:zip, :product_category :product_style, :product_origin, :vintage_date,:price, :description, :image_url)');
 		$insertStmt->bindValue(':vendor_name', Input::get('vendor_name'), PDO::PARAM_STR);
 		$insertStmt->bindValue(':location_city_code', Input::get('location_city_code'), PDO::PARAM_STR);
 		$insertStmt->bindValue(':state', Input::get('state'), PDO::PARAM_STR);
@@ -39,6 +39,7 @@ if(!empty($_POST)) {
 		$insertStmt->bindValue(':vintage_date', Input::get('vintage_date'), PDO::PARAM_STR);
 		$insertStmt->bindValue(':price', Input::get('price'), PDO::PARAM_STR);
 		$insertStmt->bindValue(':description', Input::get('description'), PDO::PARAM_STR);
+		$insertStmt->bindValue(':image_url', Input::get('image_url'), PDO::PARAM_STR);
 		
 			$insertStmt->execute();
 	} else {
