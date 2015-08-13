@@ -1,6 +1,6 @@
 <?php
-require_once '../bootstrap.php';
-/*INCLUDE IN BOOTSTRAP.PHP....require_once '../utils/InputWineseller.php';*/
+require_once '../database/db_connect.php';
+require_once '../database/config.php';
 require_once '../models/AdModelWineseller.php';
 
 /*check if field has been submitted and input has correct value THEN make a new AD object

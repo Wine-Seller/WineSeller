@@ -1,5 +1,7 @@
 <?php
 
+require_once '../database/db_connect.php';
+
 define("DB_HOST", '127.0.0.1');
 define("DB_NAME", 'wineseller_db');
 define("DB_USER", 'wineseller_JB');
@@ -30,8 +32,8 @@ class Model
             self::$dbc = new PDO('mysql:host=' . DB_HOST . ';dbname=' . DB_NAME, DB_USER, DB_PASS);
 
             /*<!-- Make sure that instance will use exceptions rather than failing silently.-->*/
-            self::$dbc->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        }
+/*            self::$dbc->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+*/        }
     }
 
     /* * Get a value from attributes based on name*/ 
