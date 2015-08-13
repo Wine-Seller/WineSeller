@@ -2,8 +2,10 @@
 <?php
 
 require_once 'AdModelWineseller.php';
-require_once 'UserModelWineseller.php';
-require_once '../bootstrap.php';
+require '';
+
+//require_once 'ParksDBmodel.php';
+
 
 $input = Input::get('page');
 
@@ -18,17 +20,16 @@ if(!empty($_POST)) {
 		Input::has('state') &&
 		Input::has('zip') && 
 		Input::has('product_category') &&
-		Input::has('product_style')&&
-		Input::has('product_origin')&&
+		Input::has('Prduct_style')&&
+		Input::has('Product_origin')&&
 		Input::has('vintage_date')&&
-		Input::has('price')&&
-		Input::has('description')&&
-		Input::has('image_url');
+		Input::has('Price')&&
+		Input::has('Description');
 	
 
 	) {
-		$insertStmt = $dbc->prepare('INSERT INTO ads (vendor_name,location_city_code, state,zip,product_category, product_style, product_origin, vintage_date, price, description, image_url)
-									VALUES (:vendor_name,:location_city_code, :state,:zip, :product_category :product_style, :product_origin, :vintage_date,:price, :description, :image_url)');
+		$insertStmt = $dbc->prepare('INSERT INTO wineseller (vendor_name,location_city_code, state,zip,product_category, Prduct_style, Product_origin, vintage_date,Price,Description)
+									VALUES (:vendor_name,:location_city_code, :state,:zip, :product_category :Prduct_style, :Product_origin, :vintage_date,:Price,:Description)');
 		$insertStmt->bindValue(':vendor_name', Input::get('vendor_name'), PDO::PARAM_STR);
 		$insertStmt->bindValue(':location_city_code', Input::get('location_city_code'), PDO::PARAM_STR);
 		$insertStmt->bindValue(':state', Input::get('state'), PDO::PARAM_STR);
@@ -39,7 +40,6 @@ if(!empty($_POST)) {
 		$insertStmt->bindValue(':vintage_date', Input::get('vintage_date'), PDO::PARAM_STR);
 		$insertStmt->bindValue(':price', Input::get('price'), PDO::PARAM_STR);
 		$insertStmt->bindValue(':description', Input::get('description'), PDO::PARAM_STR);
-		$insertStmt->bindValue(':image_url', Input::get('image_url'), PDO::PARAM_STR);
 		
 			$insertStmt->execute();
 	} else {
@@ -59,18 +59,60 @@ $offset = 0;
 $ads = ad::all();
 
 
-
 ?>
+
+
+
+<!DOCTYPE html>
 
 <html>
 <head>
-	<title>National Parks List</title>
-	 <link rel="stylesheet" href="/css/bootstrap.css">
+	<title>Welcome To The Wine Seller</title>
+
+</head>
+<p><h2>Welcome To The Wine Seller</h2></p>
+
 </head>
 <body>
 
+<div class='Wine'>Wine</div>
+<!--picture-->
+<div class ="Glassware">Glassware</div>
+<!--picture-->
+<div class ="Accessories">Accessories</div>
+<!--picture-->
+<div class ="Featured Listings">Featured Listings</div>
+<!--pictures in a carosel?-->
+
+<div>
+<!--Search Box-->
+<p> Looking for something Specific? </p>
+		<form method="POST" action="ads.show.php">
+        <label for="Search">Search</label>
+        <input id="Search" name="Search" type="text">
+<p> In </p>
+    	<form method="POST" action="ads.show.php">
+        <label for="Location">Location</label>
+        <input id="Location" name="Location" type="text">
+</div>
+
+<button type="submit" class="btn btn-primary">Search The Cellar</button>
+
+<div class = "Most_Popular">Most Popular Items</div>
+	<label for="Most_popular">Select your transmission type: </label>
+<select id="transmission" name="transmission">
+    <option>Automatic</option>
+    <option>Manual</option>
+</select>
+
+
+<div class = "Lucky">I'm Feeling Lucky</div>
+<div class = "New_Arrivals">New Arrivals</div>
+
+
+
 <div class="container">
-	<h1>National Parks</h1>
+	<h1>Wine Seller</h1>
 
 <?php foreach($errors as $error):?>
 	<p><?php echo $error; ?></p>
@@ -120,7 +162,7 @@ $ads = ad::all();
 <div class="container">
 	<h1>Make A New Ad</h1>
 	<h3><?= $errorMessage ?></h3>
-	<form  class="form-horizontal" method="POST" action="national_parks.php">
+	<form  class="form-horizontal" method="POST" action=".php">
 		<div class="form-group">
     		<label for="vendor_name" class="col-sm-2 control-label">Vendor Name</label>
     			<div class="col-sm-10">
@@ -163,7 +205,7 @@ $ads = ad::all();
       				<input type="textarea" class="form-control" name="Description" id="Description" placeholder="Enter Description">
     			</div>
     	</div>
-    	<button type="submit" class="btn btn-primary">Add New Park</button>
+    	<button type="submit" class="btn btn-primary">Add New Ad listing</button>
 	</form>
 </div>
 </body>

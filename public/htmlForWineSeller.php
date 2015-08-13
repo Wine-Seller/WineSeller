@@ -1,10 +1,14 @@
 
+<?php
+require_once'header.php'
+require_once'footer.php'
+require_once'navbar.php'
+
 <!DOCTYPE html>
 
 <html>
 <head>
-
-    <title>Welcome To The Wine Seller</title>
+	<title>Welcome To The Wine Seller</title>
 
 </head>
 <p><h2>Welcome To The Wine Seller</h2></p>
@@ -24,12 +28,11 @@
 <div>
 <!--Search Box-->
 <p> Looking for something Specific? </p>
-
-        <form method="POST" action="ads.show.php">
+		<form method="POST" action="ads.show.php">
         <label for="Search">Search</label>
         <input id="Search" name="Search" type="text">
 <p> In </p>
-        <form method="POST" action="ads.show.php">
+    	<form method="POST" action="ads.show.php">
         <label for="Location">Location</label>
         <input id="Location" name="Location" type="text">
 </div>
@@ -37,9 +40,7 @@
 <button type="submit" class="btn btn-primary">Search The Cellar</button>
 
 <div class = "Most_Popular">Most Popular Items</div>
-
-    <label for="Most_popular">Select Our Most Popular: </label>
-
+	<label for="Most_popular">Select Our Most Popular: </label>
 <select id="Mst_popular" name="Most_popular">
     <option>Chardonnay</option>
     <option>Pinot Noir</option>
@@ -54,5 +55,4 @@
 
 
 </body>
-
 </html>

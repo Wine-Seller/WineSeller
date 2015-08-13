@@ -118,7 +118,7 @@ class Ad extends Model {
 
 	public function insert()
 	{
-		$query = 'INSERT INTO national_parks (vendor_name, location_city_code, location_state_code, location_zip_code, product_category, product_origin, product_style, vintage_year, price, description)
+		$query = 'INSERT INTO ads(vendor_name, location_city_code, location_state_code, location_zip_code, product_category, product_origin, product_style, vintage_year, price, description)
 								VALUES (:vendor_name, :location_city_code, :location_state_code, :location_zip_code, :product_category, :product_origin, :product_style, :vintage_year, :price, :description)';
 	
 		$stmt = self::$dbc->prepare($query);
@@ -137,7 +137,7 @@ class Ad extends Model {
 
 	public function delete()
 	{
-		$query = 'DELETE FROM national_parks WHERE id = :id';
+		$query = 'DELETE FROM ads WHERE id = :id';
 		$stmt = self::$dbc->prepare($query);
 		$stmt->bindValue(':id', $id, PDO::PARAM_INT);
 		$stmt->execute();

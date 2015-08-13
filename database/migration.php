@@ -36,3 +36,4 @@ $createTable = "CREATE TABLE ads (
 $dbc->exec($createTable);
 
 ?>
+
