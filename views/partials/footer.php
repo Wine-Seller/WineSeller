@@ -1,5 +1,4 @@
 
- 
 <!--  </style> -->
  <footer class="footer">
  	<div class = "row" "col-md-10">
@@ -11,8 +10,8 @@
 		<a href="Index.php#topOfPage">Back to Top</a>
       </div>
 
-
-
+     </div>
+ </footer>
 
 
 <!--icons for social media?-->
