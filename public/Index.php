@@ -19,6 +19,7 @@
 
 <body>
     <?php include ("../views/partials/navbar.php");?>
+    <a name="topOfPage"></a> 
 
 <ul class = "linkBoxes">
 

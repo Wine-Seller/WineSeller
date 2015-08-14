@@ -68,7 +68,7 @@ $adsList = [
         'vintage_date'          => '0',
         'price'                 => '135.15',
         'description'           => 'Riedel Sommeliers Black Series Collector Edition Red Stem Burgundy Grand Cru',
-        'image_url'             => '/img/coravin.jpg'
+        'image_url'             => '/img/glasses.jpg'
     ],
 
 ];

@@ -6,9 +6,9 @@
       <div class="container">
 	    <a href="wineseller.dev">Home |</a>
 	    <a href="aboutUsPage.php">About Us |</a>
-	    <a href="contactUs.">Contact Us |</a>
+	    <a href="contactUs.php">Contact Us |</a>
 	    <a href="PrivacyPolicy.php">Privacy Policy |</a>
-	    <a href="something.css">Back to Top</a>
+		<a href="Index.php#topOfPage">Back to Top</a>
       </div>
      </div>
  </footer>
