@@ -44,9 +44,9 @@ if(!empty($_POST)) {
 <head>
   <title>adsWineseller.create</title>
   <!-- <link rel="stylesheet" href="../css/bootstrap.css">  -->
+  <?php require_once '../views/partials/header.php'; ?>
 </head>
 <body>
-  <?php require_once '../views/partials/header.php'; ?>
   <?php include ("../views/partials/navbar.php");?> 
   <h1>Insert a New Ad</h1>
 <!-- <h3><?= $errorMessage ?></h3> -->
@@ -112,6 +112,8 @@ if(!empty($_POST)) {
 
 </body>
 </html>
- <?php include ("../views/partials/footer.php");?>
+ <div class = "footer">
+    <?php include ("../views/partials/footer.php");?>
+</div>
 </body>
 </html>

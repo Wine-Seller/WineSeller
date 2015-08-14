@@ -80,10 +80,11 @@ $ads = Ad::all();
 <html>
 <head>
 	<title>Wineseller Ads List</title>
-	 <link rel="stylesheet" href="bootstrap.css">
+	<link rel="stylesheet" href="bootstrap.css">
+    <?php include ("../views/partials/header.php");?>
 </head>
 <body>
-<?php require_once '../views/partials/navbar.php'; ?>
+    <?php require_once '../views/partials/navbar.php'; ?>
 <div class="container">
     <h1>Index Listing Wineseller Ads</h1>
 

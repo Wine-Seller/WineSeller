@@ -2,24 +2,22 @@
 <?php
 //$_SESSION
 
-require_once'Auth.login.php';
-//require_once'input.php';
+require_once '../bootstrap.php';
 
 //if (Auth::check()){
 //	header('Location:/authorized.php');
 //	exit();
 //}
 
-
 if (Input::has ('username') && Input::has ('password')){
 //go to authorized page
-	$username = Input::get('username')
-	$password = Input::get('password')
+	$username = Input::get('username');
+	$password = Input::get('password');
 	
-	if (Input::attempt($username, $password)){
+	if (Input::attempt($username, $password))
+	{
 		header(Location:/authorized.php);
 	}
-
 
 ?>
 

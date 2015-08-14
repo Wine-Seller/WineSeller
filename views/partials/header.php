@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
   <link rel="stylesheet" type="text/css" href="../../public/css/wineseller.css">
-
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,8 +11,8 @@
 
 </head>
 <body>
-<div class = "header">
-	<h1>Welcome To Wine Seller</h1>
-</div>
+	<div class = "header">
+		<h1>Welcome To Wine Seller</h1>
+	</div>
 </body>
 </html>

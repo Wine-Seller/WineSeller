@@ -150,7 +150,9 @@ require_once '../bootstrap.php';
     </div>
 </section>
 
-<?php require_once '../views/partials/footer.php'; ?>
+<div class = "footer">
+    <?php include ("../views/partials/footer.php");?>
+</div>
 
 </body>
 </html>

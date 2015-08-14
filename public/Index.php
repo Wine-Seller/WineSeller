@@ -7,7 +7,7 @@
 <html>
 
 <head>
-    <title>Wine Seller</title>
+    <title>Welcome To The Wine Seller</title>
 
     <?php include ("../views/partials/header.php");?>
  
@@ -19,17 +19,26 @@
 
 <body>
     <?php include ("../views/partials/navbar.php");?>
+    <a name="topOfPage"></a> 
 
 <ul class = "linkBoxes">
-    <li class = "viewCellar"><a href="/adsWineseller.index.php">View the Cellar</a></li>
-    <li class = "addProduct"><a href="/adsWineseller.create.php">Add An Item To The Cellar</a></li>
-    <li "joinCellar"><a href="/users.create.php">Join The Cellar</a></li>
-</ul>
 
-    <a href="winePage.php"><img src="../img/redWineGlasses.jpg"><h4 class = "wineBox">Wine</h4></img></a>
+    <div class="row">
+        <p></p>
+        <div class="col-md-4"><a href="../adsWineseller.index.php"><img src="../img/filterEffectsWineCellar.png"><h4 class = "showCellar">View the Cellar</h4></img></a></div>
+        <p></p>
+        <div class="col-md-4"><a href="../adsWineseller.create.php"><img src="../img/filterEffectsWineCellar.png"><h4 class = "stockCellar">Stock the Cellar</h4></img></a></div>
+        <p></p>
+        <div class="col-md-4"><a href="../users.create.php"><img src="../img/filterEffectsWineCellar.png"><h4 class = "joinCellar">Join the Cellar</h4></img></a></div>
+    </div>
 
-    <a href="#"><h4 class = "glasswareBox">Glassware</h4></a>
-    <a href="#"><h4 class = "accessories">Accessories</h4></a>
+    <div class="row">
+     <div class="col-md-4"><a href="winePage.php"><img src="../img/redWineGlasses.jpg"><h4 class = "wineBox">Wine</h4></img></a></div>
+
+     <div class="col-md-4"><a href="glasswarePage.php"><img src="../img/glassware.jpg"><h4 class = "glasswareBox">Glassware</h4></img></a></div>
+
+     <div class="col-md-4"><a href="wineAccessoriesPage.php"><img src="../img/wineAccessories.jpg"><h4 class = "accessoriesBox">Accessories</h4></img></a></div>
+    </div>
 
 <div class = "footer">
     <?php include ("../views/partials/footer.php");?>

@@ -4,7 +4,7 @@
 
 <html>
 <head>
-	 <title>Wines on Wineseller</title>
+	 <title>Wineseller ~ About Us</title>
 
     <?php include ("../views/partials/header.php");?>
  
@@ -14,9 +14,10 @@
 	
 </head>
 <body>
-	<?php require_once '../views/partials/navbar.php'; ?>
+	<?php include ("../views/partials/navbar.php");?>
 
-	    <a href="#"><img src="../img/roseWine.jpg"><h4 class = "roseWine">View Rose Wines on Wineseller</h4></img></a>
+<h2>About Us ~ Page Coming</h2>
+<!-- 	    <a href="#"><img src="../img/roseWine.jpg"><h4 class = "roseWine">View Rose Wines on Wineseller</h4></img></a> -->
 
 <div class = "footer">
     <?php include ("../views/partials/footer.php");?>
