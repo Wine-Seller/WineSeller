@@ -1,10 +1,6 @@
 <?php
 
-
-/*require_once '../bootstrap.php';*/
-require_once '../database/db_connect.php';
-require_once '../database/config.php';
-
+require_once '../bootstrap.php';
 
 $dbc = new PDO('mysql:host=127.0.0.1;dbname=wineseller', 'wineseller_JB', '');
 $dbc->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

@@ -1,31 +1,43 @@
-
-.cat-list {
-	color: white;
+h1 {
+	font-size: 3em;
+	text-align: center;
+	text-indent: 5em;	
+	color: #c29f75;
 }
 .header {
-
-	background-image: url("img/winesellerLogo.png");
-	background-size: 20%;
+	background-image: url("../img/winesellerLogo.png");
+	background-size: 25%;
 	background-position: top-left;
 	background-repeat: no-repeat;
+	border: 0.1em solid #44413C;
 }
-.container {
-	background-image: url("filterEffectsWineCellar.png");
-	background-size: 100%;
-	background-repeat: no-repeat;
-	background-position: right top;
-    margin-right: 200px;
-	margin: 3em;
-	background-size: 60%;
+
+.footer {
+        bottom: -75px;
+        height: 75px;
+        position: absolute;
+       }
+} 
+
+.linkBoxes {
+	color: #722f37;
 }
 body {
-	background-image: url("brickwall.png");
-	background-size: 100%;
-	margin: 3em;
+/*	background-image: url("../img/brickwall.png");
+*/	/*background-image: url("../img/wineCellarBackground.jpg");*/
+	background-image: url("../img/filterEffectsWineCellar.png");
+	font-family: Book Antiqua, Helvetica Neue, Helvetica, Arial,sans-serif;
+	background-size: 50%;
+	background-repeat: no-repeat;
+	background-position: right;
+	margin-bottom: 320px;
+	margin-right: 100px;
+	padding: 3em;
+	/*background-color: #d9c4aa;*/
 	/*background-color: #722f37;*/
 	color: #darkgrey;
-/*	B7AFA3;
-*/}
+/*	light stone color: #B7AFA3;*/
+}
 .intro {
 	font-size: 3em;
 	font-style: bold;
@@ -43,6 +55,7 @@ body {
 .btn {
 	background-color: #722f37;
 	border-color: darkgrey;
+	color: white;
 }
 .cat-title {
 	color: #b29366;
