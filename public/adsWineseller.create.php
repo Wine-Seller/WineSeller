@@ -85,15 +85,15 @@ if(!empty($_POST)) {
           </div>
         <label for="vintage_year" class="col-md-6 control-label">Vintage Year</label>
           <div class="col-md-6">
-              <input type="number" class="form-control" name="vintage_date" id="vintage_date" placeholder="Enter date park was established">
+              <input type="number" class="form-control" name="vintage_date" id="vintage_date" placeholder="Enter vintage year if applicable">
           </div>
         <label for="price" class="col-md-6 control-label">Price</label>
           <div class="col-md-6">
-              <input type="text" class="form-control" name="price" id="price" placeholder="Enter area in acres without commas">
+              <input type="text" class="form-control" name="price" id="price" placeholder="Enter price of product">
           </div>
         <label for="description" class="col-md-6 control-label">Description of Product</label>
           <div class="col-md-6">
-              <input type="textarea" class="form-control" rows="10" name="description" id="description" placeholder="Enter description of park">
+              <input type="textarea" class="form-control" rows="10" name="description" id="description" placeholder="Enter description of product">
           </div>
              <label for="image" class="col-md-6 control-label">Upload Product Image</label>
           <div class="col-md-6">
