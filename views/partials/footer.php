@@ -1,18 +1,17 @@
 
  
-    
-</style>
+<!--  </style> -->
  <footer class="footer">
+ 	<div class = "row" "col-md-10">
       <div class="container">
-
+	    <a href="wineseller.dev">Home |</a>
+	    <a href="aboutUsPage.php">About Us |</a>
+	    <a href="contactUs.">Contact Us |</a>
+	    <a href="PrivacyPolicy.php">Privacy Policy |</a>
+	    <a href="something.css">Back to Top</a>
       </div>
-    </footer>
-    <a href="wineseller.dev">Home</a>
-    <a href="aboutUs.html">About Us</a>
-    <a href="contactUs.html">Contact Us</a>
-    <a href="something.css">Privacy Policy</a>
-    <a href="something.css">Back to top</a>
-
+     </div>
+ </footer>
 
 <!--icons for social media?-->
 <a href="#"><i class="fa fa-facebook-square"></i></a>

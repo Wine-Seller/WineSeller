@@ -17,9 +17,11 @@ if(Input::has('id')) {
 <html>
 <head>
   <title>View of Wineseller Ad</title>
+   <?php include ("../views/partials/header.php");?>
 </head>
 
 <body>
+   <?php include ("../views/partials/navbar.php");?>
 
 <div class="container">
   <h1>Vendor is: <?= $ad->vendor_name; ?></h1>
@@ -34,7 +36,9 @@ if(Input::has('id')) {
    <p>description is: <?= $ad->description; ?></p>
 	<!-- <img src="<?= $ad->image_url ?>"; --> 
 </div>
-	
+<div class = "footer">
+    <?php include ("../views/partials/footer.php");?>
+</div>
 </body>
 </html>
 

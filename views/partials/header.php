@@ -11,8 +11,8 @@
 
 </head>
 <body>
-<div class = "header">
-	<h1>Welcome To Wine Seller</h1>
-</div>
+	<div class = "header">
+		<h1>Welcome To Wine Seller</h1>
+	</div>
 </body>
 </html>

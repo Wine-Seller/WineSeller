@@ -101,9 +101,10 @@ if(Input::has('vendor_name') && Input::has('location')) {
 <html>
 <head>
   <title></title>
+  <?php require_once '../views/partials/header.php'; ?>
 </head>
 <body>
-  <?php require_once '../views/partials/header.php'; ?>
+  <?php require_once '../views/partials/navbar.php'; ?>
 <div class="container">
   <h1>Insert a New Ad</h1>
   <!-- <h3><?= $errorMessage ?></h3> -->
@@ -155,7 +156,8 @@ if(Input::has('vendor_name') && Input::has('location')) {
     	<button type="submit" class="btn btn-primary">Add New Ad</button>
 	</form>
 </div>
-</body>
-</html>
+<div class = "footer">
+    <?php include ("../views/partials/footer.php");?>
+</div>
 </body>
 </html>
