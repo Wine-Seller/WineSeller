@@ -3,9 +3,7 @@
 /*listing of all ads*/
 /*in the ads.index.php file, you should have a listing of 3-5 hard-coded sample ads*/
 
-require_once '../models/AdModelWineseller.php';
-require_once '../database/db_connect.php';
-require_once '../database/config.php';
+require_once '../bootstrap.php';
    
 /*class example*/
 /*$search = Input::get('search');
@@ -53,7 +51,7 @@ $adsList = [
         'vintage_year'          => 'N/A',
         'price'                 => '299.95',
         'description'           => 'Coravin 1000 Wine Access System. For centuries, the cork had to be removed in order to enjoy a glass of wine-that era is over. The Coravin System is a transformational new technology that allows users to pour wine whiling keeping the cork in the bottle, where it has been since it was ﬁrst sealed in the winery. Now you can enjoy your favorite and ﬁnest wines by the glass whenever you like, and feel conﬁdent that your wine will be protected until the next glass is poured. Now you can share and enjoy the same bottle, or bottles on multiple occasions, over weeks, months, or even longer - without wasting a drop. How do we do it? When the Coravin System is put in place, a thin, hollow needle is inserted through the cork to extract the wine. The bottle is then pressurized with argon, an inert gas that is in the air we breathe. Once the bottle has been pressurized, the wine flows through the needle and pours into your glass. Once your wine is poured, the needle is removed, and the cork reseals itself.',
-        'image_url'             => '/img/coravin.jpg'
+        'image_url'             => 'img/coravin.jpg'
     ],
 
      [
@@ -68,7 +66,7 @@ $adsList = [
         'vintage_year'          => 'N/A',
         'price'                 => '135.15',
         'description'           => 'Riedel Sommeliers Black Series Collector Edition Red Stem Burgundy Grand Cru',
-        'image_url'             => '/img/coravin.jpg'
+        'image_url'             => 'img/glasses.jpg'
     ],
 
 ];
@@ -85,47 +83,57 @@ $ads = Ad::all();
 	 <link rel="stylesheet" href="bootstrap.css">
 </head>
 <body>
-
+<?php require_once '../views/partials/navbar.php'; ?>
 <div class="container">
-	<h1>Index Listing Wineseller Ads</h1>
+    <h1>Index Listing Wineseller Ads</h1>
 
 <!-- On each page load, retrieve and display all records from the database
-skipping description and vendor city/state to avoid lengthy records -->	
+(skipping description and vendor city/state to avoid lengthy records) --> 
 
-<!-- On each page load, retrieve and display all records from the database -->
-
-	<? foreach($ads as $ad): ?>
-		
-		<tr>
-			<td><?= $ad['vendor_name']; ?></td>
-			<td><?= $ad['location_city_code']; ?></td>
-			<td><?= $ad['location_state_code']; ?></td>
-			<td><?= $ad['location_zip_code']; ?></td>
-			<td><?= $ad['product_category']; ?></td>
-			<td><?= $ad['product_style']; ?></td>
-			<td><?= $ad['product_origin']; ?></td>
-			<td><?= $ad['vintage_date']; ?></td>
-			<td><?= $ad['price']; ?></td>
-			<td><?= $ad['description']; ?></td>
-            <td><?= $ad['image_url']; ?></td>
-		</tr>
-
-	<?php endforeach; ?>
-	
+<div class="small-12 columns">
+        <h5 class="featured">All Wineseller Listings</h5>
 </div>
+    <div class="row">
+    <?php foreach($ads as $ad) : ?>
+        <div class="large-4 medium-6 columns">
+            <div class="post">
+                <h2>
+                    <a href="ads.show.php?id=<?= $ad['id']; ?>">
+                        <?= $ad['vendor_name']; ?></a>
+                </h2>
+                    <p><strong>Vendor Location: </strong>
+                        <?= $ad['location_city_code']; ?>
+                        <?= $ad['location_state_code']; ?>
+                        <?= $ad['location_zip_code']; ?>
+                    </p>
+                    <p>
+                        <strong>Product Category: </strong>
+                        <?= $ad['product_category']; ?>
+                    </p>
+                     <p>
+                        <strong>Product Style: </strong>
+                        <?= $ad['product_style']; ?>
+                    </p>
+                     <p>
+                        <strong>Vintage: </strong>
+                        <?= $ad['vintage_date']; ?>
+                    </p>
+                    <p>
+                        <strong>Price: </strong>
+                        $<?= $ad['price']; ?>
+                    </p>
+                    <p>
+                        <strong>Description: </strong>
+                        <?= $ad['description']; ?>
+                    </p>
+                        <a href="ads.show.php?id=<?= $ad['id']; ?>">
+                        <img src="<?= $ad['image_url']; ?>" alt="No image provided.">
+                    </a>
+            </div>
+        </div>    
+    <?php endforeach ; ?>
+    </div>
 
-<div class="table-responsive">
-	<table class="table table-hover">
-		<tr>
-			<th>Vendor Name</strong></th>
-			<th>Vendor Location: Zip Code</strong></th>
-			<th>Product Category</strong></th>
-			<th>Product Origin</strong></th>
-			<th>Product Style</strong></th>
-			<th>Vintage Year</strong></th>
-			<th>Price</strong></th>
-		</tr>	
-	</table>
-
+<?php require_once '../views/partials/footer.php'; ?>
 </body>
 </html>

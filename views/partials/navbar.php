@@ -12,7 +12,7 @@
 
         
           <ul class="nav navbar-nav">
-            <li><a href="#">Wine</a></li>
+            <li><a href="winePage.php">Wine</a></li>
             <li><a href="#">Glassware</a></li>
              <li><a href="#">Accessories
             </a></li>

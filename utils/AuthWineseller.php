@@ -1,7 +1,6 @@
 <?php
 /*clicking on login links to this login authorization page*/
-require_once '../utils/InputWineseller.php';
-require_once '../LoggerWineseller.php';
+
 require_once '../bootstrap.php';
 
 /*create a class called Auth. */ 

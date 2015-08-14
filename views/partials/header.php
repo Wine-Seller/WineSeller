@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <div class="header">
-<h1>Welcome To the Wine Seller!</h1>
-  <link rel="stylesheet" type="text/css" href="css/wineseller.css">
+
+  <link rel="stylesheet" type="text/css" href="../../public/css/wineseller.css">
+
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,6 +11,10 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
-</div>
 </head>
 <body>
+<div class = "header">
+	<h1>Welcome To Wine Seller</h1>
+</div>
+</body>
+</html>

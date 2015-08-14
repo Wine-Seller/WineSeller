@@ -7,30 +7,33 @@
 <html>
 
 <head>
-    <title>Welcome To The Wine Seller</title>
-
-</head>
+    <title>Wine Seller</title>
 
     <?php include ("../views/partials/header.php");?>
-    <?php include ("../views/partials/navbar.php");?>
-
+ 
+    <link rel="stylesheet" href="bootstrap.css">
+    <link rel="stylesheet" href="bootstrap.min.css">
     <link rel="stylesheet" href="../css/wineseller.css">
-    <link rel="stylesheet" href="bootstarp.css">
-    <link rel="stylesheet" href="bootstarp.min.css">
-
+   
 </head>
 
 <body>
+    <?php include ("../views/partials/navbar.php");?>
 
-    <li><a href="/adsWineseller.index.php">View the Cellar</a></li>
-    <li><a href="/adsWineseller.create.php">Add An Item To The Cellar</a></li>
-    <li><a href="/users.create.php">Join The Cellar</a></li>
+<ul class = "linkBoxes">
+    <li class = "viewCellar"><a href="/adsWineseller.index.php">View the Cellar</a></li>
+    <li class = "addProduct"><a href="/adsWineseller.create.php">Add An Item To The Cellar</a></li>
+    <li "joinCellar"><a href="/users.create.php">Join The Cellar</a></li>
+</ul>
 
-    <h4><a href="#">Wine</a></h4>
-    <h4><a href="#">Glassware</a></h4>
-    <h4><a href="#">Accessories</a></h4>
+    <a href="winePage.php"><img src="../img/redWineGlasses.jpg"><h4 class = "wineBox">Wine</h4></img></a>
 
+    <a href="#"><h4 class = "glasswareBox">Glassware</h4></a>
+    <a href="#"><h4 class = "accessories">Accessories</h4></a>
+
+<div class = "footer">
     <?php include ("../views/partials/footer.php");?>
+</div>
 
 </body>
 

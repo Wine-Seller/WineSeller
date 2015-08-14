@@ -48,10 +48,7 @@ class Ad extends Model {
 		/*Start by connecting to the DB*/
 		self::dbConnect();
 		
-		/*get all rows*/
-		// @TODO: Learning from the previous method, return all the matching records
-
-		$stmt = self::$dbc->query('SELECT * from wineseller');
+		$stmt = self::$dbc->query('SELECT * from ads');
 		
 		/*Assign results to a variable*/
 		$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -100,6 +97,7 @@ class Ad extends Model {
 					vintage_year = :vintage_year,
 					price = :price,
 					description = :description,
+					url_image = :url_image,
 					WHERE id = :id';
 		$stmt = self::$dbc->prepare($query);
 		$stmt->bindValue(':vendor_name', $this->attributes['vendor_name'], PDO::PARAM_STR);
@@ -112,14 +110,15 @@ class Ad extends Model {
 		$stmt->bindValue(':vintage_year', $this->attributes['vintage_year'], PDO::PARAM_INT);		
 		$stmt->bindValue(':price', $this->attributes['price'], PDO::PARAM_INT);
 		$stmt->bindValue(':description', $this->attributes['description'], PDO::PARAM_STR);
+		$stmt->bindValue(':url_image', $this->attributes['url_image'], PDO::PARAM_STR);
 		$stmt->bindValue(':id', $this->attributes['id'], PDO::PARAM_STR);
 		$stmt->execute();
 	}
 
 	public function insert()
 	{
-		$query = 'INSERT INTO ads(vendor_name, location_city_code, location_state_code, location_zip_code, product_category, product_origin, product_style, vintage_year, price, description)
-								VALUES (:vendor_name, :location_city_code, :location_state_code, :location_zip_code, :product_category, :product_origin, :product_style, :vintage_year, :price, :description)';
+		$query = 'INSERT INTO ads(vendor_name, location_city_code, location_state_code, location_zip_code, product_category, product_origin, product_style, vintage_year, price, description, url_image)
+								VALUES (:vendor_name, :location_city_code, :location_state_code, :location_zip_code, :product_category, :product_origin, :product_style, :vintage_year, :price, :description, :url_image)';
 	
 		$stmt = self::$dbc->prepare($query);
 		$stmt->bindValue(':vendor_name', Input::get('vendor_name'), PDO::PARAM_STR);
@@ -132,6 +131,8 @@ class Ad extends Model {
 		$stmt->bindValue(':vintage_year', Input::get('vintage_year'), PDO::PARAM_INT);
 		$stmt->bindValue(':price', Input::get('price'), PDO::PARAM_INT);
 		$stmt->bindValue(':description', Input::get('description'), PDO::PARAM_STR);
+		$stmt->bindValue(':url_image', Input::get('url_image'), PDO::PARAM_STR);
+
 		$stmt->execute();
 	}
 

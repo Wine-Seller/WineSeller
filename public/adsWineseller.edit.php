@@ -1,6 +1,5 @@
 <?php
 
-require_once '../models/AdModelWineseller.php';
 require_once '../bootstrap.php';
 
 /*edit file is index and show files together*/  
@@ -104,6 +103,7 @@ if(Input::has('vendor_name') && Input::has('location')) {
   <title></title>
 </head>
 <body>
+  <?php require_once '../views/partials/header.php'; ?>
 <div class="container">
   <h1>Insert a New Ad</h1>
   <!-- <h3><?= $errorMessage ?></h3> -->
