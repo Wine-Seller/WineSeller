@@ -4,12 +4,13 @@ and for each table has a model which is a special kind of class
 model serves as data layer in between application and table in DB;
 rest of code doesn't have to connect to DB or talk to DB directly*/
 
-require_once 'baseModelWineseller.php';
 
-define("DB_HOST", '127.0.0.1');
+/*define("DB_HOST", '127.0.0.1');
 define("DB_NAME", 'wineseller_db');
 define("DB_USER", 'wineseller_JB');
 define("DB_PASS", '');
+*/
+require_once 'baseModelWineseller.php';
 
 /*add condition requiring wine viewers to be over 21???*/
 /*singular class name and plural tablename*/

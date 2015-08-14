@@ -1,11 +1,8 @@
 <?php
-require_once '../database/db_connect.php';
-require_once '../database/config.php';
-require_once '../models/AdModelWineseller.php';
+
+require_once '../bootstrap.php';
 
 /*check if field has been submitted and input has correct value THEN make a new AD object
-
-
 - assign properties and try to save to DB- build out in php - require post input for all fields*/
 
 if(!empty($_POST)) {
@@ -27,6 +24,18 @@ if(!empty($_POST)) {
       $ad->description = Input::get('description');
       $ad->save();
   }
+
+    // reset form and tell user their post was successfully added
+/*      $savedInput = ['title'=>'', 'description'=>'', 'price'=>'', 'contactName'=>'', 'contactEmail'=>'', 'contactPhone'=>''];
+      echo "<div class='row'>
+          <div class='large-12 columns'>
+            <h3>Your info was added to our cellar.</h3>
+            <a href='ads.index.php'>
+              <button type='button' class='btn'>View your new ad</button>
+            </a>
+          </div>
+        </div>";*/
+
 }
 
 ?>
@@ -34,61 +43,75 @@ if(!empty($_POST)) {
 <html>
 <head>
   <title>adsWineseller.create</title>
+  <!-- <link rel="stylesheet" href="../css/bootstrap.css">  -->
 </head>
 <body>
-<div class="container">
-	<h1>Insert a New Ad</h1>
+  <?php require_once '../views/partials/header.php'; ?>
+  <?php include ("../views/partials/navbar.php");?> 
+  <h1>Insert a New Ad</h1>
 <!-- <h3><?= $errorMessage ?></h3> -->
+<div class="container">
+  <fieldset>
 
 	<form  class="form-horizontal" method="POST" action="adsWineseller.create.php">
     <div class="form-group">
-        <label for="vendor_name" class="col-sm-2 control-label">Vendor Name</label>
-          <div class="col-sm-10">
+        <label for="vendor_name" class="col-md-6 control-label">Vendor Name</label>
+         <div class="col-md-6">
               <input type="text" class="form-control" name="vendor_name" id="vendor_name" placeholder="Enter your vendor name">
-          </div>
-        <label for="location_city_code" class="col-sm-2 control-label">Vendor Location: City</label>
-          <div class="col-sm-10">
+        </div>
+        <label for="location_city_code" class="col-md-6 control-label">Vendor Location: City</label>
+          <div class="col-md-6">
               <input type="text" class="form-control" name="location_city_code" id="location_city_code" placeholder="Enter city in which vendor is located">
           </div>
-          <label for="location_state_code" class="col-sm-2 control-label">Vendor Location: State</label>
-          <div class="col-sm-10">
+          <label for="location_state_code" class="col-md-6 control-label">Vendor Location: State</label>
+          <div class="col-md-6">
               <input type="text" class="form-control" name="location_state_code" id="location_state_code" placeholder="Enter state in which vendor is located">
           </div>
-          <label for="location_zip_code" class="col-sm-2 control-label">Vendor Location: Zip Code</label>
-          <div class="col-sm-10">
+          <label for="location_zip_code" class="col-md-6 control-label">Vendor Location: Zip Code</label>
+          <div class="col-md-6">
               <input type="text" class="form-control" name="location_zip_code" id="location_zip_code" placeholder="Enter zip code in which vendor is located">
           </div>
-          <label for="product_category" class="col-sm-2 control-label">Product Category</label>
-          <div class="col-sm-10">
+          <label for="product_category" class="col-md-6 control-label">Product Category</label>
+          <div class="col-md-6">
               <input type="text" class="form-control" name="product_category" id="product_category" placeholder="Enter product catgegory">
           </div>
-          <label for="product_origin" class="col-sm-2 control-label">Product Origin</label>
-          <div class="col-sm-10">
+          <label for="product_origin" class="col-md-6 control-label">Product Origin</label>
+          <div class="col-md-6">
               <input type="text" class="form-control" name="product_origin" id="product_origin" placeholder="Enter product origin by country or location">
           </div>
-          <label for="product_style" class="col-sm-2 control-label">Product Style</label>
-          <div class="col-sm-10">
+          <label for="product_style" class="col-md-6 control-label">Product Style</label>
+          <div class="col-md-6">
               <input type="text" class="form-control" name="product_style" id="product_style" placeholder="Enter product style">
           </div>
-        <label for="vintage_year" class="col-sm-2 control-label">Vintage Year</label>
-          <div class="col-sm-10">
-              <input type="date" class="form-control" name="vintage_year" id="vintage_year" placeholder="Enter date park was established">
+        <label for="vintage_year" class="col-md-6 control-label">Vintage Year</label>
+          <div class="col-md-6">
+              <input type="number" class="form-control" name="vintage_date" id="vintage_date" placeholder="Enter date park was established">
           </div>
-        <label for="price" class="col-sm-2 control-label">Price</label>
-          <div class="col-sm-10">
+        <label for="price" class="col-md-6 control-label">Price</label>
+          <div class="col-md-6">
               <input type="text" class="form-control" name="price" id="price" placeholder="Enter area in acres without commas">
           </div>
-        <label for="description" class="col-sm-2 control-label">Description of Product</label>
-          <div class="col-sm-10">
-              <input type="textarea" class="form-control" name="description" id="description" placeholder="Enter description of park">
+        <label for="description" class="col-md-6 control-label">Description of Product</label>
+          <div class="col-md-6">
+              <input type="textarea" class="form-control" rows="10" name="description" id="description" placeholder="Enter description of park">
           </div>
+             <label for="image" class="col-md-6 control-label">Upload Product Image</label>
+          <div class="col-md-6">
+          </div>
+                <p>
+  <!--<button type="submit" class="btn btn-primary btn-lg">Create New Wineseller Ad</button>--> 
+        <span class="btn btn-default btn-file">
+          Browse <input type="file">
+        </span>
+          
       </div>
-	
-    	<button type="submit" class="btn btn-primary">Create New Wineseller Ad</button>
 
-	</form>
+  </form>
+  </fieldset>      
 </div>
+
 </body>
 </html>
+ <?php include ("../views/partials/footer.php");?>
 </body>
 </html>

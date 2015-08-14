@@ -3,7 +3,6 @@
 may add a button for edit form or to contact seller e.g.*/
 
 require_once '../bootstrap.php';
-require_once '../AdModelWineseller.php';
 
 if(Input::has('id')) {
 	$id = Input::get('id');
