@@ -8,10 +8,10 @@
       </div>
     </footer>
     <a href="wineseller.dev">Home</a>
-    <a href="aboutUs.html">About Us</a>
-    <a href="contactUs.html">Contact Us</a>
-    <a href="something.css">Privacy Policy</a>
-    <a href="something.css">Back to top</a>
+    <a href="aboutUs.php">About Us</a>
+    <a href="contactUs.php">Contact Us</a>
+    <a href="PrivacyPolicy.php">Privacy Policy</a>
+    <a href="top">Back to top</a>
 
 
 <!--icons for social media?-->
