@@ -9,8 +9,10 @@
 	    <a href="PrivacyPolicy.php">Privacy Policy |</a>
 		<a href="Index.php#topOfPage">Back to Top</a>
       </div>
+
      </div>
  </footer>
+
 
 <!--icons for social media?-->
 <a href="#"><i class="fa fa-facebook-square"></i></a>

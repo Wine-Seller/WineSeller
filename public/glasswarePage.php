@@ -14,6 +14,7 @@
 	
 </head>
 <body>
+	<?php require_once '../views/partials/navbar.php'; ?>
 
 <h2>Glassware on Wineseller</h2>
    <a href="#"><img src="<!-- ../img/roseWine.jpg -->"><h4 class = "accessories">Page Coming ~ View Glassware on Wineseller</h4></img></a>
