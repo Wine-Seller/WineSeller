@@ -49,6 +49,7 @@ class Ad extends Model {
 		self::dbConnect();
 		
 		$stmt = self::$dbc->query('SELECT * from ads');
+		var_dump($stmt);
 		
 		/*Assign results to a variable*/
 		$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
