@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<h1>Welcome To the Wine Seller!</h1>
   <div class="header">
+<h1>Welcome To the Wine Seller!</h1>
   <link rel="stylesheet" type="text/css" href="css/wineseller.css">
   
   <meta charset="utf-8">
