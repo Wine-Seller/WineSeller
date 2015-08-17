@@ -2,6 +2,7 @@
 // site initialization
 $_ENV = require_once '.env.php';
 
+
 $dbc = new PDO('mysql:host=' . $_ENV['DB_HOST'] . ';dbname=' . $_ENV['DB_NAME'], $_ENV['DB_USER'], $_ENV['DB_PASS']);
 
 
