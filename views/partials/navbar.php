@@ -1,4 +1,5 @@
-<nav class="navbar navbar-default">
+
+</button><nav class="navbar navbar-default">
   <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -14,8 +15,7 @@
           <ul class="nav navbar-nav">
             <li><a href="../winePage.php">Wine</a></li>
             <li><a href="../glasswarePage.php">Glassware</a></li>
-             <li><a href="../wineAccessoriesPage.php">Accessories
-            </a></li>
+             <li><a href="../wineAccessoriesPage.php">Accessories</a></li>
             
               
         <li role="separator" class="divider"></li>

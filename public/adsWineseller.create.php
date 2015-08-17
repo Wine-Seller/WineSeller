@@ -59,6 +59,7 @@ if(!empty($_POST)) {
          <div class="col-md-6">
               <input type="text" class="form-control" name="vendor_name" id="vendor_name" placeholder="Enter your vendor name">
         </div>
+
         <label for="location_city_code" class="col-md-6 control-label">Vendor Location: City</label>
           <div class="col-md-6">
               <input type="text" class="form-control" name="location_city_code" id="location_city_code" placeholder="Enter city in which vendor is located">
@@ -73,7 +74,12 @@ if(!empty($_POST)) {
           </div>
           <label for="product_category" class="col-md-6 control-label">Product Category</label>
           <div class="col-md-6">
-              <input type="text" class="form-control" name="product_category" id="product_category" placeholder="Enter product catgegory">
+            <select>
+  <option value="Wine">Wine</option>
+  <option value="Glassware">Glassware</option>
+  <option value="Accessories">Accessories</option>
+</select>
+              <!-- <input type="text" class="form-control" name="product_category" id="product_category" placeholder="Enter product catgegory"> -->
           </div>
           <label for="product_origin" class="col-md-6 control-label">Product Origin</label>
           <div class="col-md-6">
