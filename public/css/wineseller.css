@@ -1,19 +1,23 @@
 h1 {
 	font-size: 3em;
-	text-align: center;
+	text-align: left;
 	text-indent: 5em;	
 	color: #2C2C2C;
 }
 h3 {
 	color: #645A4C;
+	font-size: 3em;
+}
+h4 {
+	color: #000;
 }
 .header {
-	background-image: url("../img/winesellerLogo.png");
-	background-padding: 1em;
-	background-size: 25%;
+	background-image: url("../img/winesLogo.png");
+	background-size: 10%;
 	background-position: top-left;
 	background-repeat: no-repeat;
-	border: 0.1em solid #645A4C;
+	margin-bottom: 3em;
+	/*border: 0.1em solid #645A4C;*/
 }
 .navbar {
 /*	light stone color: #B7AFA3;*/
@@ -32,7 +36,7 @@ h3 {
 	color: #722f37;
 }
 body {
-	background-image: url("../img/brickwall.png");
+	/*background-image: url("../img/brickwall.png");*/
 	/*background-image: url("../img/wineCellarBackground.jpg");*/
 	/*background-image: url("../img/filterEffectsWineCellar.png");*/
 	font-family: Book Antiqua, Helvetica Neue, Helvetica, Arial,sans-serif;
@@ -69,5 +73,19 @@ body {
 .cat-title {
 	color: #b29366;
 }
+.createAd {
+	text-align: right;
+}
+.footer {
+	color: black;
+}
+.createAd {
+	background-color: #fff;
+	color: black;
+}
+.post {
+	color: black;
+}
+
 
 

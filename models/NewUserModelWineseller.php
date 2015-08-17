@@ -1,15 +1,10 @@
 <?php
-/*following convention where table names are plural
-and for each table has a model which is a special kind of class
-model serves as data layer in between application and table in DB;
-rest of code doesn't have to connect to DB or talk to DB directly*/
 
 require_once 'baseModelWineseller.php';
 
-/*call the class Product or Ad???*/
-class Ad extends Model {
+class User extends Model {
 
-	protected static $table = 'ads';
+	protected static $table = 'users';
 /*static methods can be called without being instantiated; don't have to have an object to establish*/
 /*     * Find a record based on an id*/     
 
@@ -21,7 +16,7 @@ class Ad extends Model {
 		such as 'id' or leads to hacking of data; protect everywhere data coming in*/
 		self::dbConnect();
 	  // @TODO: Create select statement using prepared statements
-		$query = 'SELECT * FROM ads WHERE id = :id';
+		$query = 'SELECT * FROM users WHERE id = :id';
 		$stmt = self::$dbc->prepare($query);
 		$stmt->bindValue(':id', $id, PDO::PARAM_INT);
 		$stmt->execute();
@@ -48,7 +43,10 @@ class Ad extends Model {
 		/*Start by connecting to the DB*/
 		self::dbConnect();
 		
-		$stmt = self::$dbc->query('SELECT * from ads');
+		/*get all rows*/
+		// @TODO: Learning from the previous method, return all the matching records
+
+		$stmt = self::$dbc->query('SELECT * from users');
 		
 		/*Assign results to a variable*/
 		$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -76,72 +74,45 @@ class Ad extends Model {
 			}
 		}
 		/*need for when add data, need new connection to save it*/
-
-		/*next line temporarily hidden to debug*/
-		/*self::dbConnect();*/
+		self::dbConnect();
 	}
 
-	public function update() 
+	public function update()
 	// @TODO: After insert, add the id back to the attributes array so the object can properly reflect the id
 /*array_unshift() — Prepend one or more elements to the beginning of an array
 */    // @TODO: You will need to iterate through all the attributes to build the prepared query
 
     // @TODO: Use prepared statements to ensure data security
 	{
-		$query = 'UPDATE ads 
-					SET vendor = :vendor,
-					city = :city,
-					state = :state,
-					zip = :zip,
-					category = :category,
-					origin = :origin,
-					style = :style,
-					vintage = :vintage,
-					price = :price,
-					description = :description,
-					image = :image,
+		$query = 'UPDATE users 
+					SET username = :username,
+					password = :password,
+					email = :email,
+					age = :age,
 					WHERE id = :id';
 		$stmt = self::$dbc->prepare($query);
-		$stmt->bindValue(':vendor', $this->attributes['vendor'], PDO::PARAM_STR);
-		$stmt->bindValue(':city', $this->attributes['city'], PDO::PARAM_STR);
-		$stmt->bindValue(':state', $this->attributes['state'], PDO::PARAM_STR);
-		$stmt->bindValue(':zip', $this->attributes['zip'], PDO::PARAM_INT);
-		$stmt->bindValue(':category', $this->attributes['category'], PDO::PARAM_STR);
-		$stmt->bindValue(':origin', $this->attributes['origin'], PDO::PARAM_STR);
-		$stmt->bindValue(':style', $this->attributes['style'], PDO::PARAM_STR);
-		$stmt->bindValue(':vintage', $this->attributes['vintage'], PDO::PARAM_INT);		
-		$stmt->bindValue(':price', $this->attributes['price'], PDO::PARAM_INT);
-		$stmt->bindValue(':description', $this->attributes['description'], PDO::PARAM_STR);
-		$stmt->bindValue(':image', $this->attributes['image'], PDO::PARAM_STR);
+		$stmt->bindValue(':username', $this->attributes['username'], PDO::PARAM_STR);
+		$stmt->bindValue(':password', $this->attributes['password'], PDO::PARAM_STR);
+		$stmt->bindValue(':email', $this->attributes['email'], PDO::PARAM_STR);
+		$stmt->bindValue(':age', $this->attributes['age'], PDO::PARAM_INT);
 		$stmt->bindValue(':id', $this->attributes['id'], PDO::PARAM_STR);
 		$stmt->execute();
 	}
 
 	public function insert()
 	{
-		parent::dbConnect();
-		$query = 'INSERT INTO ads (vendor, city, state, zip, category, origin, style, vintage, price, description, image)
-								VALUES (:vendor, :city, :state, :zip, :category, :origin, :style, :vintage, :price, :description, :image);';
-	
-		$stmt = parent::$dbc->prepare($query);
-		$stmt->bindValue(':vendor', $this->vendor, PDO::PARAM_STR);
-		$stmt->bindValue(':city', $this->city, PDO::PARAM_STR);
-		$stmt->bindValue(':state', $this->state, PDO::PARAM_STR);
-		$stmt->bindValue(':zip', $this->zip, PDO::PARAM_STR);
-		$stmt->bindValue(':category', $this->category, PDO::PARAM_STR);
-		$stmt->bindValue(':origin', $this->origin, PDO::PARAM_STR);
-		$stmt->bindValue(':style', $this->style, PDO::PARAM_STR);
-		$stmt->bindValue(':vintage', $this->vintage, PDO::PARAM_INT);
-		$stmt->bindValue(':price', $this->price, PDO::PARAM_INT);
-		$stmt->bindValue(':description', $this->description, PDO::PARAM_STR);
-		$stmt->bindValue(':image', $this->image, PDO::PARAM_STR);
-
-		return $stmt->execute();
+		$query = 'INSERT INTO users (username, password, email, age) VALUES (:username, :password, :email, :age)';
+		$stmt = self::$dbc->prepare($query);
+		$stmt->bindValue(':username', $this->attributes['username'], PDO::PARAM_STR);
+		$stmt->bindValue(':password', $this->attributes['password'], PDO::PARAM_STR);
+		$stmt->bindValue(':email', $this->attributes['email'], PDO::PARAM_STR);
+		$stmt->bindValue(':age', $this->attributes['age'], PDO::PARAM_INT);
+		$stmt->execute();
 	}
 
 	public function delete()
 	{
-		$query = 'DELETE FROM ads WHERE id = :id';
+		$query = 'DELETE FROM users WHERE id = :id';
 		$stmt = self::$dbc->prepare($query);
 		$stmt->bindValue(':id', $id, PDO::PARAM_INT);
 		$stmt->execute();

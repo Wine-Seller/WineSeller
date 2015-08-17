@@ -12,6 +12,7 @@
 
         
           <ul class="nav navbar-nav">
+            <li><a href="../index.php">Home</a></li>
             <li><a href="../winePage.php">Wine</a></li>
             <li><a href="../glasswarePage.php">Glassware</a></li>
              <li><a href="../wineAccessoriesPage.php">Accessories
