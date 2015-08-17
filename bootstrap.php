@@ -13,7 +13,7 @@ $dbc->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 require_once 'utils/InputWineseller.php';
 require_once 'utils/AuthWineseller.php';
 require_once 'utils/LoggerWineseller.php';
+require_once 'models/baseModelWineseller.php';
 require_once 'models/AdModelWineseller.php';
 require_once 'models/UserModelWineseller.php';
-require_once 'models/baseModelWineseller.php';
 ?>
