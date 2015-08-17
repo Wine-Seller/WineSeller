@@ -80,54 +80,62 @@ if(!empty($_POST)) {
   <form  class="form-horizontal" method="POST" action="adsWineseller.create.php" enctype="multipart/form-data">
     <div class="form-group">
         <label for="vendor" class="col-md-6 control-label">* Vendor Name</label>
-         <div class="col-md-6">
+          <div class="col-md-6">
               <input type="text" class="form-control" name="vendor" id="vendor" placeholder="Enter your vendor name | required field">
         </div>
 
 
-        <label for="city" class="col-md-6 control-label">Vendor Location: City</label>
-
-          <div class="col-md-6">
+          <label for="city" class="col-md-6 control-label">Vendor Location: City</label>
+            <div class="col-md-6">
               <input type="text" class="form-control" name="city" id="city" placeholder="Enter city in which vendor is located">
           </div>
+
           <label for="state" class="col-md-6 control-label">Vendor Location: State</label>
-          <div class="col-md-6">
+            <div class="col-md-6">
               <input type="text" class="form-control" name="state" id="state" placeholder="Enter state in which vendor is located">
           </div>
+
           <label for="zip" class="col-md-6 control-label">Vendor Location: Zip Code</label>
-          <div class="col-md-6">
+            <div class="col-md-6">
               <input type="text" class="form-control" name="zip" id="zip" placeholder="Enter zip code in which vendor is located">
           </div>
+
           <label for="category" class="col-md-6 control-label">* Product Category</label>
 
-            <select>
-  <option value="Wine">Wine</option>
-  <option value="Glassware">Glassware</option>
-  <option value="Accessories">Accessories</option>
-</select>
-              <!-- <input type="text" class="form-control" name="product_category" id="product_category" placeholder="Enter product catgegory"> -->
-
+         <!--  <select>
+            <option value="Wine">Wine</option>
+            <option value="Glassware">Glassware</option>
+            <option value="Accessories">Accessories</option>
+          </select> -->
+            <div class = "col-md-6">
+              <input type="text" class="form-control" name="category" id="category" placeholder="Enter product catgegory">
           </div>
+
           <label for="origin" class="col-md-6 control-label">Product Origin</label>
-          <div class="col-md-6">
+            <div class="col-md-6">
               <input type="text" class="form-control" name="origin" id="origin" placeholder="Enter product origin by country or location">
           </div>
+
           <label for="style" class="col-md-6 control-label">Product Style</label>
-          <div class="col-md-6">
+            <div class="col-md-6">
               <input type="text" class="form-control" name="style" id="style" placeholder="Enter product style">
           </div>
+
         <label for="vintage" class="col-md-6 control-label">Vintage Year</label>
           <div class="col-md-6">
               <input type="number" class="form-control" name="vintage_date" id="vintage_date" placeholder="Enter vintage year if applicable">
           </div>
+
         <label for="price" class="col-md-6 control-label">* Price</label>
           <div class="col-md-6">
               <input type="text" class="form-control" name="price" id="price" placeholder="Enter price of product">
           </div>
+
         <label for="description" class="col-md-6 control-label">* Description of Product</label>
           <div class="col-md-6">
               <input type="textarea" class="form-control" rows="10" name="description" id="description" placeholder="Enter description of product">
           </div>
+
         <label for="image" class="col-md-6 control-label"> Upload Product Image</label>
           <div class="col-md-6">             
             --> Browse <input type="file" name="somefile">

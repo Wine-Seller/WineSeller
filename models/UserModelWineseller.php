@@ -25,10 +25,10 @@
 			}
 			return $password = $dbc->query("SELECT password FROM " . static::$table . " WHERE username = '" . $username . "'")->fetchColumn();
 	    }
-	    // Check if submitted password matches password in user table
+	    // Verify if submitted password matches password in user table
 	    public static function verifyLogin($username, $inputPassword)
 	    {
-    		// If username is in user table, get hashed password from table
+    		// retrieve hashed password from table if in user table
     		$realPassword = self::getPassword($username);
     		if(password_verify($inputPassword, $realPassword)) {
     			return true;
@@ -50,7 +50,8 @@
 			$stmt->execute();
 			$userInfo = $stmt->fetch(PDO::FETCH_ASSOC);
 			$userInfo['username'] = $username;
-			return $userInfo;	//$userInfois an array that contains user_id, username, email, and age.
+			//$userInfo array contains user_id, username, email, and age.
+			return $userInfo;	
 	    }
 	}
 ?>
