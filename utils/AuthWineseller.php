@@ -25,25 +25,25 @@ require_once '../bootstrap.php';
 				return true;
 			}
 		}
-		// returns a boolean whether or not the user is logged in
+		// boolean true or false - is user logged in?
 		public static function check()
 		{
 			return isset($_SESSION['LOGGED_IN_USER']);
 		}
-		// returns the username of the logged in user
-		public static function user()	// always call check() before this method
+		// return username 
+		public static function user()
 		{
 			$username = $_SESSION['LOGGED_IN_USER'];
-			// Use the logged-in username to the retrieve their user_id and email from the database.
-			$userArray = User::getUserInfo($username);	//contains keys 'user_id', 'contact_email', and 'date_created'
+			// obtain user_id and email through username
+			$userArray = User::getUserInfo($username);
 			return $userArray;
 		}
 		public static function logout()
 		{
-			// Unset all of the session variables.
+			// Unset session variables.
 		    $_SESSION = array();
-		    // If it's desired to kill the session, also delete the session cookie.
-		    // Note: This will destroy the session, and not just the session data!
+		    
+		    // Destroy  session and delete cookies
 		    if (ini_get("session.use_cookies")) {
 		        $params = session_get_cookie_params();
 		        setcookie(session_name(), '', time() - 42000,
@@ -51,7 +51,6 @@ require_once '../bootstrap.php';
 		            $params["secure"], $params["httponly"]
 		        );
 		    }
-		    // Finally, destroy the session.
 		    session_destroy();
 		}
 	}

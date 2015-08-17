@@ -18,7 +18,7 @@
     $errors = [];
     $errorMessages = ['username'=>'', 'password'=>'', 'verifyPassword'=>'', 'email'=>'', 'age'=>''];
     // Retrieve and sanitize user input into 'Create an Ad' form, retrieve and display any errors that occur
-    if (!empty($_POST)) {
+    /*if (!empty($_POST)) {
         try {
             $newUsername = Input::getString('username', 2, 25);
         } catch (DomainException $e) {
@@ -42,10 +42,10 @@
         } catch (Exception $e) {
             $errors[] = $e->getMessage();
             $errorMessages['password'] = "Sorry, password does not match";
-        }
-        try {
+        }*/
+      /*  try {*/
             // verify password
-            Input::areIdentical('password', 'verifyPassword');
+     /*       Input::areIdentical('password', 'verifyPassword');
         } catch (Exception $e) {
             $errors[] = $e->getMessage();
             $errorMessages['verifyPassword'] = "Your password does not match";
@@ -55,7 +55,7 @@
         } catch (Exception $e) {
             $errors[] = $e->getMessage();
             $errorMessages['email'] = "Email is incorrect";
-        }
+        }*/
         // insert if no errors
         if (empty($errors)) {
             $user = new User;
@@ -69,20 +69,28 @@
             Auth::attempt($newUsername, $newPassword);
             header("Location: users.show.php");
         }
-    }
+/*    }*/
 ?>
 
 <!doctype html>
 <html lang="en-US" class="no-js">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+ 
+    <link rel="stylesheet" href="bootstrap.css">
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <link rel="stylesheet" href="../css/wineseller.css">
+     <meta charset="utf-8">
     <title>Create a Profile on Wineseller</title>
 
-<?php require_once '../views/partials/header.php'; ?>
+
 </head>
 <body>
-
+<?php require_once '../views/partials/header.php'; ?>
 <?php require_once '../views/partials/navbar.php'; ?>
 
 <section class="form">
@@ -114,16 +122,16 @@
                                 echo "<span class='error'>" . $errorMessages['contactEmail'] . "</span>";
                          }
                     ?>
-
-                <div class="row">
-                    <div class="large-8 columns">
-                        <input type='submit' name='create' value='Become a member of Wineseller' class="button small radius">
-                    </div>
-                </div>
+                <input type='submit' name='create' value='Become a member of Wineseller' class="button medium radius">
             </form>
         </div>
     </div>
 </section>
+<p></p>
+<div>
+<button><a href="../users.show.php"><!-- <img src="../img/visitCellar.jpg"> --><h4>Show Cellar Members</h4></img></a></button>
+</div>
+
 
 <?php require_once '../views/partials/footer.php'; ?>
 
