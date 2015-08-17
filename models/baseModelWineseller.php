@@ -19,17 +19,18 @@ class Model
     {
         /* if not already connected, go to next line & connect; singleton pattern - only want one instance of db connection
         if changed to static would allow override which we don't want
-        could past contents of configUser_db.php here instead of requiring once at top*/
+        could paste contents of configUser_db.php here instead of requiring once at top*/
         if(!self::$dbc)
         {
             /*    @TODO: Connect to database: user_db; name codeup; password codeup*/    
             self::$dbc = new PDO('mysql:host=' . $_ENV['DB_HOST'] . ';dbname=' . $_ENV['DB_NAME'], $_ENV['DB_USER'], $_ENV['DB_PASS']);
 
 
-            /*<!-- Make sure that instance will use exceptions rather than failing silently.-->*/
-/*            self::$dbc->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-*/        }
-    }
+        // Make sure that instance will use exceptions rather than failing silently.
+        self::$dbc->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        }
+        
+        }
 
     /* * Get a value from attributes based on name*/ 
     // Magic getter to retrieve values from $data

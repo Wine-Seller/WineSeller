@@ -1,21 +1,18 @@
 <?php
-/*The ads.show.php page will have hard-coded data showing view of one single ad
-may add a button for edit form or to contact seller e.g.*/
+/*Shows a single ad that has been clicked from the ads.index.php*/
 
 require_once '../bootstrap.php';
 
-if(Input::has('id')) {
-	$id = Input::get('id');
-	$ad = Ad::find($id);
-} else {
-	header('');
-	exit();
-}
-
+    // Retrieve record with id matching the $_GET request in url
+    $ad = Ad::find($_GET['id']);
+    $adArray = $ad->attributes[0];
 ?>
+
+<!DOCTYPE html>
 
 <html>
 <head>
+  <meta charset="utf-8">
   <title>View of Wineseller Ad</title>
    <?php include ("../views/partials/header.php");?>
 </head>
@@ -23,22 +20,28 @@ if(Input::has('id')) {
 <body>
    <?php include ("../views/partials/navbar.php");?>
 
+   <h2><?= $adArray['vendor']; ?> Wineseller Ad</h2>
+
 <div class="container">
-  <h1>Vendor is: <?= $ad->vendor_name; ?></h1>
-   <p>Vendor city is: <?= $ad->location_city_code; ?></p>
-   <p>Vendor state is: <?= $ad->location_state_code; ?></p>
-   <p>Vendor city is: <?= $ad->location_zip_code; ?></p>
-   <p>Category of product is: <?= $ad->product_category; ?></p>
-   <p>Product comes from: <?= $ad->product_origin; ?></p>
-   <p>Style is: <?= $ad->product_style; ?></p>
-   <p>vintage_year is: <?= $ad->vintage_year; ?></p>
-   <p>price is: <?= $ad->price; ?></p>
-   <p>description is: <?= $ad->description; ?></p>
-	<!-- <img src="<?= $ad->image_url ?>"; --> 
+  <h4>Vendor: <?= $adArray['vendor']; ?></h4>
+   <p>Vendor city: <?= $adArray['city']; ?></p>
+   <p>Vendor state: <?= $adArray['state']; ?></p>
+   <p>Vendor zip code: <?= $adArray['zip']; ?></p>
+   <p>Product category: <?= $adArray['category']; ?></p>
+   <p>Product origin: <?= $adArray['origin']; ?></p>
+   <p>Style: <?= $adArray['style']; ?></p>
+   <p>Vintage: <?= $adArray['vintage']; ?></p>
+   <p>Price: <?= $adArray['price']; ?></p>
+   <p>Description: <?= $adArray['description']; ?></p>
+   <p><img src="<?= $adArray['image']; ?>"></p>
 </div>
-<div class = "footer">
-    <?php include ("../views/partials/footer.php");?>
-</div>
+
+ <p class="view-post">
+  <a href="adsWineseller.index.php">Back to all ads</a>
+</p>
+
+
+<?php require_once '../views/partials/footer.php'; ?>
+
 </body>
 </html>
-

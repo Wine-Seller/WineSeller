@@ -1,32 +1,26 @@
+<!-- Displays a form to create a user in the database -->
+
 <?php
-
-require_once '../bootstrap.php';
-
-  // If user is already logged in, redirect to profile page
-  if(Auth::check()){
-    header("Location: users.show.php");
-    exit();
-  }
-
-    // if there is data submited from form, save it to the array 
-    $savedInput = ['username'=>'', 'password'=>'', 'checkPswd'=>'', 'contactEmail'=>''];
-    if(isset($_POST['create'])) {
-        // replace initial values of user input array with $_POST data
-        $savedInput = array_replace($savedInput, $_POST);   
+    // Require Classes and start a session for the page
+    require_once '../bootstrap.php';
+    // If user is already logged in, redirect to profile page and don't run rest of PHP
+    if(Auth::check()){
+        header("Location: users.show.php");
+        exit();
     }
-
-      // initialize an array to catch all the generic errors, and another to hold any custom messages for display
+    // Array to hold user input in case of errors
+    $savedInput = ['username'=>'', 'password'=>'', 'verifyPassword'=>'', 'email'=>'', 'age'=>''];
+    // if there is data submited from form, save it to the array above
+    if(isset($_POST['create'])) {
+        $savedInput = array_replace($savedInput, $_POST);   // replace initial values of user input array with $_POST data
+    }
+    // initialize an array to catch all the generic errors, and another to hold any custom messages for display
     $errors = [];
-    $errorMessages = ['username'=>'', 'password'=>'', 'checkPswd'=>'', 'contactEmail'=>''];
-
-
+    $errorMessages = ['username'=>'', 'password'=>'', 'verifyPassword'=>'', 'email'=>'', 'age'=>''];
     // Retrieve and sanitize user input into 'Create an Ad' form, retrieve and display any errors that occur
     if (!empty($_POST)) {
-
         try {
-
             $newUsername = Input::getString('username', 2, 25);
-
         } catch (DomainException $e) {
             $errors[] = $e->getMessage();
             $errorMessages['username'] = "The username must be an alphanumeric string of characters.";
@@ -35,13 +29,10 @@ require_once '../bootstrap.php';
             $errorMessages['username'] = "The username must be between 2 and 75 characters long.";
         } catch (Exception $e) {
             $errors[] = $e->getMessage();
-            $errorMessages['username'] = "Woops, an error occured, please try entering a different username.";
+            $errorMessages['username'] = "Sorry, username does not match";
         }
-
         try {
-
             $newPassword = Input::getString('password', 8, 75);
-
         } catch (DomainException $e) {
             $errors[] = $e->getMessage();
             $errorMessages['password'] = "The password must be an alphanumeric string of characters.";
@@ -50,41 +41,31 @@ require_once '../bootstrap.php';
             $errorMessages['password'] = "The password must be at least 8 characters long.";
         } catch (Exception $e) {
             $errors[] = $e->getMessage();
-            $errorMessages['password'] = "Woops! An error occured, please try again.";
+            $errorMessages['password'] = "Sorry, password does not match";
         }
-
         try {
-            // Make sure both passwords entered are identical
-            Input::areIdentical('password', 'checkPswd');
-
+            // verify password
+            Input::areIdentical('password', 'verifyPassword');
         } catch (Exception $e) {
             $errors[] = $e->getMessage();
-            $errorMessages['checkPswd'] = "Woops, passwords don't match.";
+            $errorMessages['verifyPassword'] = "Your password does not match";
         }
-
         try {
-
-            $newEmail = Input::validateEmail('contactEmail');
-
+            $newEmail = Input::validateEmail('email');
         } catch (Exception $e) {
             $errors[] = $e->getMessage();
-            $errorMessages['contactEmail'] = "Invalid email format";
+            $errorMessages['email'] = "Email is incorrect";
         }
-
+        // insert if no errors
         if (empty($errors)) {
-
             $user = new User;
             $user->username = $newUsername;
             $user->password = password_hash($newPassword, PASSWORD_DEFAULT);
-            // add a try/catch and a method in BaseModel that checks to see if email already exists
-            $user->contact_email = $newEmail;   
-            $user->date_created = date('l\, F jS\, Y \a\t h:i:s A');    // current date/time of submission
+            $user->email = $newEmail;   
             $user->save();
-
-            // Reset the $savedInput array back to its original content so the form appears blank.
-            $savedInput = ['username'=>'', 'password'=>'', 'contactEmail'=>''];
-
-            // Log them in automatically, and take them to their profile page.
+            // Reset the $savedInput array to empty form fields 
+            $savedInput = ['username'=>'', 'password'=>'', 'email'=>'', 'age'=>''];
+            // Log user in and send to profile page.
             Auth::attempt($newUsername, $newPassword);
             header("Location: users.show.php");
         }
@@ -94,13 +75,9 @@ require_once '../bootstrap.php';
 <!doctype html>
 <html lang="en-US" class="no-js">
 <head>
-  <link rel="stylesheet" href="bootstrap.css">
-    <link rel="stylesheet" href="bootstrap.min.css">
-    <!-- <link rel="stylesheet" href="../css/wineseller.css"> -->
-
     <meta charset="utf-8" />
-<!--     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
- -->    <title>Create an Account with Wineseller</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create a Profile on Wineseller</title>
 
 <?php require_once '../views/partials/header.php'; ?>
 </head>
@@ -108,41 +85,39 @@ require_once '../bootstrap.php';
 
 <?php require_once '../views/partials/navbar.php'; ?>
 
-<!-- HTML for create user form -->
-
 <section class="form">
     <div class="row">
         <div class="small-12 columns">
-            <h2>Create an Account</h2>
+            <h2>Create a Profile on Wineseller</h2>
                 <?php if(!empty($errors)){
                             echo "<span class='error'>*See errors below:</span>";
                     }
                 ?>
             <form method="POST" action=''>
-            <input type='text' name='username' value="<?= $savedInput['username']; ?>" placeholder='Username' required />
-                 <?php if(!empty($errorMessages['username'])){
+                <input type='text' name='username' value="<?= $savedInput['username']; ?>" placeholder='Username' required />
+                   <?php if(!empty($errorMessages['username'])){
                                 echo "<span class='error'>" . $errorMessages['username'] . "</span>";
                          }
                     ?>
-            <input type='password' name='password' value="<?= $savedInput['password']; ?>" placeholder='Password' required />
-                 <?php if(!empty($errorMessages['password'])){
+                <input type='password' name='password' value="<?= $savedInput['password']; ?>" placeholder='Password' required />
+                   <?php if(!empty($errorMessages['password'])){
                                 echo "<span class='error'>" . $errorMessages['password'] . "</span>";
                          }
                     ?>
-            <input type='password' name='checkPswd' value="<?= $savedInput['checkPswd']; ?>" placeholder='Confirm Password' required />
-                 <?php if(!empty($errorMessages['checkPswd'])){
-                                echo "<span class='error'>" . $errorMessages['checkPswd'] . "</span>";
+                <input type='password' name='verifyPassword' value="<?= $savedInput['verifyPassword']; ?>" placeholder='Confirm Password' required />
+                   <?php if(!empty($errorMessages['verifyPassword'])){
+                                echo "<span class='error'>" . $errorMessages['verifyPassword'] . "</span>";
                          }
                     ?>
-            <input type='text' name='contactEmail' value="<?= $savedInput['contactEmail']; ?>" placeholder='Email' required />
-                 <?php if(!empty($errorMessages['contactEmail'])){
+                <input type='text' name='contactEmail' value="<?= $savedInput['email']; ?>" placeholder='Email' required />
+                   <?php if(!empty($errorMessages['email'])){
                                 echo "<span class='error'>" . $errorMessages['contactEmail'] . "</span>";
                          }
                     ?>
 
                 <div class="row">
                     <div class="large-8 columns">
-                        <input type='submit' name='create' value='Submit' class="button small radius">
+                        <input type='submit' name='create' value='Become a member of Wineseller' class="button small radius">
                     </div>
                 </div>
             </form>
@@ -150,9 +125,7 @@ require_once '../bootstrap.php';
     </div>
 </section>
 
-<div class = "footer">
-    <?php include ("../views/partials/footer.php");?>
-</div>
+<?php require_once '../views/partials/footer.php'; ?>
 
 </body>
 </html>
