@@ -59,15 +59,14 @@
                
             <form method="POST" action=''>
 
-                <input type='text' name='username' value="['username']; ?>" placeholder='Username' required />
+                <input type='text' name='username' value="<?['username']; ?>" placeholder='Username' required />
                
-                <input type='password' name='password' value="['password']; ?>" placeholder='Password' required />
+                <input type='password' name='password' value="<?['password']; ?>" placeholder='Password' required />
                   
-                <input type='text' name='email' value="['email']; ?>" placeholder='Email' required />
+                <input type='text' name='email' value="<?['email']; ?>" placeholder='Email' required />
                   
-               <input type='text' name='age' value="['age']; ?>" placeholder='age' required />
-                   
-                    ?>
+                <input type='text' name='age' value="<?['age']; ?>" placeholder='age' required />
+                  
                 <input type='submit' name='create' value='Become a member of Wineseller' class="button medium radius">
             </form>
         </div>
@@ -75,7 +74,7 @@
 </section>
 <p></p>
 <div>
-<button><a href="../users.show.php"><img src="../img/visitCellar.jpg"><h4>Show Cellar Members</h4></img></a></button>
+<button><a href="../users.show.php"><img src="../img/visitCellar.jpg"><h4>Show/Edit Cellar Member Profile</h4></img></a></button>
 </div>
 
 

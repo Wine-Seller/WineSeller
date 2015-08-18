@@ -87,6 +87,8 @@ if(Input::has('title') && Input::has('vendor')) {
         $errors[] = $e->getMessage();
       }
 
+      $ad->post_date = date('Y-m-d h:i');
+
     $ad->save();
     /*model then handles the save on object*/
   }
