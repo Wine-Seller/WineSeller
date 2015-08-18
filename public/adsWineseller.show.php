@@ -22,10 +22,10 @@ require_once '../bootstrap.php';
     <link rel="stylesheet" href="../css/wineseller.css">
      <meta charset="utf-8">
   <title>View of Wineseller Ad</title>
-   <?php include ("../views/partials/header.php");?>
 </head>
 
 <body>
+   <?php include ("../views/partials/header.php");?>
    <?php include ("../views/partials/navbar.php");?>
 
 
@@ -42,6 +42,7 @@ require_once '../bootstrap.php';
    <p>Vintage: <?= $adArray['vintage']; ?></p>
    <p>Price: <?= $adArray['price']; ?></p>
    <p>Description: <?= $adArray['description']; ?></p>
+   <p>post_date: <?= $adArray['post_date']; ?></p>
    <p><img src="<?= $adArray['image']; ?>"></p>
  </div>
 </div>

@@ -6,11 +6,12 @@
    /* if(!Auth::check()){
         header("Location: index.php");
         exit();
-    }*/
-    // returns array of ads by user's id
+       }*/
+       
     function pageController()
     {
         $userArray = Auth::user();
+    // returns array of ads by user's id
         $data =['ads' => Ad::findAds($userArray['user_id'])];
         return $data;
     }

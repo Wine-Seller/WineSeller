@@ -27,6 +27,7 @@ $createTable = "CREATE TABLE ads (
     price DECIMAL(10, 2),
     description TEXT,
     image VARCHAR(100),
+    post_date DATE,
     PRIMARY KEY (id)
 )";
 

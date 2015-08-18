@@ -2,8 +2,6 @@
 
 require_once '../bootstrap.php';
 
-
-
 // Tell PDO to throw exceptions on error
 /*$dbc->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);*/
 
@@ -25,7 +23,7 @@ $adsList = [
         'vintage'       => '2014',
         'price'         => '20.00',
         'description'   => 'Vermentino is among the most popular grapes in Italy. We harvest these grapes from Las Brisas Vineyard in Carneros, California. The wine offers acidity and minerality, and it pairs well with lighter fare, such as seafood.',
-        'image'         => '/img/vermentinoBendingBranch.jpg'
+        'image'         => '/img/vermentinoBendingBranch.jpg',
     ],
 
     [
@@ -66,7 +64,7 @@ $adsList = [
         'city'          => 'Columbus',
         'state'         => 'Ohio',
         'zip'           => '10003',
-        'category'      => 'Accessories',
+        'category'      => 'Glassware',
         'origin'        => 'US',
         'style'         => 'Wine Glasses Red Burgundy',
         'vintage'       => '0',
@@ -77,11 +75,10 @@ $adsList = [
 
 ];
 
-/*Update park_seeder.php to use prepare() rather than exec() - MySQL caches this statement*/
-       /* ()*/
+/*use prepare() rather than exec() - MySQL caches this statement*/
 
-    $stmt = $dbc->prepare('INSERT INTO ads (title, vendor,city, state, zip, category, style, origin, vintage, price, description, image) 
-        VALUES (:title, :vendor, :city, :state, :zip, :category, :style, :origin, :vintage, :price, :description, :image)');
+    $stmt = $dbc->prepare('INSERT INTO ads (title, vendor,city, state, zip, category, style, origin, vintage, price, description, image, post_date) 
+        VALUES (:title, :vendor, :city, :state, :zip, :category, :style, :origin, :vintage, :price, :description, :image, :post_date)');
 
 foreach ($adsList as $list) {
     $stmt->bindValue(':title', $list['title'], PDO::PARAM_STR);
@@ -96,7 +93,8 @@ foreach ($adsList as $list) {
     $stmt->bindValue(':price', $list['price'], PDO::PARAM_STR);
     $stmt->bindValue(':description', $list['description'], PDO::PARAM_STR);
     $stmt->bindValue(':image', $list['image'], PDO::PARAM_STR);
- /*   $stmt->bindValue(':id', $list['id'], PDO::PARAM_STR);*/
+    $stmt->bindValue(':post_date', $list['post_date'], PDO::PARAM_STR);
+
     $stmt->execute();
 
     echo "Inserted ID: " . $dbc->lastInsertId() . PHP_EOL;
