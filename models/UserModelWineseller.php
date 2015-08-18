@@ -6,47 +6,106 @@
 		protected static $table = 'users';
 
 		// Does a passed username exist in the table?
-		public static function checkUser($username)
+
+		public static function find($id)
 		{
-			$dbc = self::dbConnect();
-			// See if username exists in the database
-			$userFound = $dbc->query("SELECT username FROM " . static::$table . " WHERE username = '" . $username . "'")->fetchColumn();
-			return !empty($userFound) ? true : false;
+		/*can't use a prepared statement on a tablename*/
+		/*:id is a placeholder id - id is a variable standin for actual variable; assigning a variable is a type of binding;
+		don't use string interpolation/don't pass in straight variables into statement
+		such as 'id' or leads to hacking of data; protect everywhere data coming in*/
+		self::dbConnect();
+	  	// Create select statement using prepared statements
+		$query = 'SELECT * FROM users WHERE id = :id';
+		$stmt = self::$dbc->prepare($query);
+		$stmt->bindValue(':id', $id, PDO::PARAM_INT);
+		$stmt->execute();
+
+		 // Store the result set in a variable named $result
+		$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+		        
+		// The following code will set the attributes on the calling object based on the result variable's contents
+		/*instance starts out as nothing*/
+		$instance = null;
+        if ($result)
+        {
+        	/*populate instance with properties*/
+            $instance = new static;
+            $instance->attributes = $result;
+        }
+        /*instance is an object*/
+        return $instance;
 		}
 
 		// If a username exists in the table, retrieve its password
 		public static function getPassword($username)
 		{
+		self::dbConnect();
+	 	// Create select statement using prepared statements
+		$query = 'SELECT * FROM users WHERE username = :username';
+		$stmt = self::$dbc->prepare($query);
+		$stmt->bindValue(':username', $username, PDO::PARAM_STR);
+		$stmt->execute();
+		
+		 // Store the result set in a variable named $result
+		$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+		        
+		// The following code will set the attributes on the calling object based on the result variable's contents
+		/*instance starts out as nothing*/
+		$instance = null;
+        if ($result)
+        {
+        	/*populate instance with properties*/
+            $instance = new static;
+            $instance->attributes = $result;
+        }
+        /*instance is an object*/
+        return $instance;
+    	}
 
-			$dbc = self::dbConnect();
-			// See if username exists in the database
-			$userExists = self::checkUser($username);
-			if(!$userExists){
-				throw new Exception ("Username does not exist.");
-			}
-			return $password = $dbc->query("SELECT password FROM " . static::$table . " WHERE username = ' ' . $username . ' '")->fetchColumn();
-	    }
 	    // Verify if submitted password matches password in user table
+    	// retrieve hashed password from table if in user table
 	    public static function verifyLogin($username, $inputPassword)
 	    {
-    		// retrieve hashed password from table if in user table
-    		$dbPassword = self::getPassword($username);
+	    	self::dbConnect();
     		if(password_verify($inputPassword, $dbPassword)) {
     			return true;
     		} else {
     			return false;
     		}
+	 	// Create select statement using prepared statements
+		$query = 'SELECT * FROM users WHERE username = :username';
+		$stmt = self::$dbc->prepare($query);
+		$stmt->bindValue(':username', $username, PDO::PARAM_STR);
+		$stmt->execute();
+		
+		 // Store the result set in a variable named $result
+		$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+		        
+		// The following code will set the attributes on the calling object based on the result variable's contents
+		/*instance starts out as nothing*/
+		$instance = null;
+        if ($result)
+        {
+        	/*populate instance with properties*/
+            $instance = new static;
+            $instance->attributes = $result;
+        /*instance is an object*/
+        return $instance;
+        };
+
+
 	    }
 	    // If username is in user table, retrieve email and user_id
 		public static function getUserInfo($username)
 		{
 			$dbc = self::dbConnect();
 			// See if username exists in the database
-			$userExists = self::checkUser($username);
+			$userExists = self::find($username);
 			if(!$userExists){
 				throw new Exception ("Username does not exist.");
 			}
-			$stmt = $dbc->prepare("SELECT user_id FROM " . static::$table . " WHERE username = :username");
+			$query = 'SELECT user_id FROM ' . static::$table . 'WHERE username = :username';
+			self::$dbc->prepare($query);
 			$stmt->bindValue(':username', $username, PDO::PARAM_STR);
 			$stmt->execute();
 			$userInfo = $stmt->fetch(PDO::FETCH_ASSOC);

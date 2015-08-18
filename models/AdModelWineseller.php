@@ -48,7 +48,7 @@ class Ad extends Model {
 		/*Start by connecting to the DB*/
 		self::dbConnect();
 		
-		$stmt = self::$dbc->query('SELECT * from ads');
+		$stmt = self::$dbc->query('SELECT * from ads ORDER BY post_date DESC');
 		
 		/*Assign results to a variable*/
 		$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -101,6 +101,7 @@ class Ad extends Model {
 					price = :price,
 					description = :description,
 					image = :image,
+					post_date = :post_date
 					WHERE id = :id';
 		$stmt = self::$dbc->prepare($query);
 		$stmt->bindValue(':title', $this->attributes['title'], PDO::PARAM_STR);
@@ -116,14 +117,15 @@ class Ad extends Model {
 		$stmt->bindValue(':description', $this->attributes['description'], PDO::PARAM_STR);
 		$stmt->bindValue(':image', $this->attributes['image'], PDO::PARAM_STR);
 		$stmt->bindValue(':id', $this->attributes['id'], PDO::PARAM_STR);
+		$stmt->bindValue(':post_date', $this->post_date, PDO::PARAM_STR);
 		$stmt->execute();
 	}
 
 	public function insert()
 	{
 		parent::dbConnect();
-		$query = 'INSERT INTO ads (title, vendor, city, state, zip, category, origin, style, vintage, price, description, image)
-								VALUES (:title, :vendor, :city, :state, :zip, :category, :origin, :style, :vintage, :price, :description, :image);';
+		$query = 'INSERT INTO ads (title, vendor, city, state, zip, category, origin, style, vintage, price, description, image, post_date)
+								VALUES (:title, :vendor, :city, :state, :zip, :category, :origin, :style, :vintage, :price, :description, :image, :post_date);';
 	
 		$stmt = parent::$dbc->prepare($query);
 		$stmt->bindValue(':title', $this->title, PDO::PARAM_STR);
@@ -138,6 +140,8 @@ class Ad extends Model {
 		$stmt->bindValue(':price', $this->price, PDO::PARAM_INT);
 		$stmt->bindValue(':description', $this->description, PDO::PARAM_STR);
 		$stmt->bindValue(':image', $this->image, PDO::PARAM_STR);
+		$stmt->bindValue(':post_date', $this->post_date, PDO::PARAM_STR);
+
 
 		return $stmt->execute();
 	}

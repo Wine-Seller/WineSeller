@@ -39,14 +39,15 @@ if(!empty($_POST)) {
       $ad->price = Input::get('price');
       $ad->description = Input::get('description');
       $ad->image = $filename;
+      $ad->post_date = date('Y-m-d h:i');
       $ad->insert();
       
     // $stmt->execute();
 
       /*   reset form and tell user their post was successfully added - send user to page which shows list of index page to see add*/
       /*echo "<h3>Your info was added to our cellar. You will be redirected to the show page to view your new ad.</h3>";*/
-/*      a href="../adsWineseller.index.php"><img class = "displayed cellarImage" src="../img/visitWineCellar.jpg"><h4 class = "show Cellar">Visit the Cellar to View Your Ad</h4></img></a></div>;
-*/
+/*      a href="../adsWineseller.index.php"><img class = "displayed cellarImage" src="../img/visitWineCellar.jpg"><h4 class = "show Cellar">Visit the Cellar to View Your Ad</h4></img></a></div>;*/
+      
       header("Location: /adsWineseller.index.php");
       exit();
     }

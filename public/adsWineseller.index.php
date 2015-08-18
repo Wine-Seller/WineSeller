@@ -61,7 +61,7 @@ $adsList = [
         'city'          => 'Columbus',
         'state'         => 'Ohio',
         'zip'           => '10003',
-        'category'      => 'Accessories',
+        'category'      => 'Glassware',
         'origin'        => 'US',
         'style'         => 'Wine Glasses Red Burgundy',
         'vintage'       => 'N/A',
@@ -141,6 +141,7 @@ $ads = Ad::all();
                         <a href="adsWineseller.show.php?id=<?= $ad['id']; ?>">
                         <img src="<?= $ad['image']; ?>" alt="No image provided.">
                     </a>
+
             </div>
         </div>    
     <?php endforeach ; ?>
