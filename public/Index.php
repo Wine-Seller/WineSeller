@@ -24,25 +24,24 @@
     
     <?php include ("../views/partials/header.php");?>
     <?php include ("../views/partials/navbar.php");?>
-    <a name="topOfPage"></a> 
-
+    
 <div class = "linkBoxes">
 
     <div class="row topRow">
         <p></p>
-        <div class="col-md-4"><a href="../adsWineseller.index.php"><img class = "imageSize cellarImage" src="../img/visitCellar.jpg"><h4 class = "show Cellar">Visit the Cellar</h4></img></a></div>
+        <div class="col-md-4"><a href="../adsWineseller.index.php"><img class = "displayed cellarImage" src="../img/visitWineCellar.jpg"><h4 class = "show Cellar">Visit the Cellar</h4></img></a></div>
         <p></p>
-        <div class="col-md-4"><a href="../adsWineseller.create.php"><img class = "imageSize" src="../img/wineStore.jpg"><h4 class = "stock Cellar">Stock the Cellar</h4></img></a></div>
+        <div class="col-md-4"><a href="../adsWineseller.create.php"><img class = "displayed" src="../img/stockCellarPic.jpg"><h4 class = "stock Cellar">Stock the Cellar</h4></img></a></div>
         <p></p>
-        <div class="col-md-4"><a href="../users.create.php"><img class = "imageSize" src="../img/join.jpg"><h4 class = "join Cellar">Join the Cellar</h4></img></a></div>
-    </div>
+        <div class="col-md-4"><a href="../users.create.php"><img class = "displayed" src="../img/join.jpg"><h4 class = "join Cellar">Join the Cellar</h4></img></a></div>
 
-    <div class="row bottomRow">
-     <div class="col-md-4"><a href="winePage.php"><img class = "imageSize wineImage" src="../img/wines.jpg"><h4 class = "wine Box">Wine</h4></img></a></div>
 
-     <div class="col-md-4"><a href="glasswarePage.php"><img class = "imageSize" src="../img/glassesDecanter.jpg"><h4 class = "glassware Box">Glassware</h4></img></a></div>
+    <div class="bottomRow">
+       <div class="col-md-4"><a href="winePage.php"><img class = "displayed wineImage" src="../img/wines2.jpg"><h4 class = "wine Box">Wine</h4></img></a></div>
 
-     <div class="col-md-4"><a href="wineAccessoriesPage.php"><img class = "imageSize" src="../img/wineAccessories.jpg"><h4 class = "accessories Box">Accessories</h4></img></a></div>
+       <div class="col-md-4"><a href="glasswarePage.php"><img class = "displayed" src="../img/glassesDecanter.jpg"><h4 class = "glassware Box">Glassware</h4></img></a></div>
+
+       <div class="col-md-4"><a href="wineAccessoriesPage.php"><img class = "displayed" src="../img/wineAccessories.jpg"><h4 class = "accessories Box">Accessories</h4></img></a></div>
     </div>
 </div>
 

@@ -9,6 +9,7 @@ require_once '../bootstrap.php';
 $adsList = [
 
     [
+        'title'         => 'Vermentino White Wine 750 ml',
         'vendor'        => 'Bending Branch Winery',
         'city'          => 'Comfort',
         'state'         => 'Texas',
@@ -23,6 +24,7 @@ $adsList = [
     ],
 
     [
+        'title'         => 'Lafite Bordeaux Left Bank 750 ml',
         'vendor'        => 'Total Wine and More',
         'city'          => 'Atlanta',
         'state'         => 'Georgia',
@@ -38,6 +40,7 @@ $adsList = [
 
      [
 
+        'title'         => 'Coravin Wine Storage System',
         'vendor'        => 'Wine Enthusiast',
         'city'          => 'New York',
         'state'         => 'New York',
@@ -53,6 +56,7 @@ $adsList = [
 
      [
 
+        'title'         => 'Riedel Burgundy Glasses Set',
         'vendor'        => 'Crystal Classics',
         'city'          => 'Columbus',
         'state'         => 'Ohio',
@@ -77,12 +81,17 @@ $ads = Ad::all();
 
 <html>
 <head>
-	<title>Wineseller Ads List</title>
-	<link rel="stylesheet" href="bootstrap.css">
-    <link rel="stylesheet" href="../css/wineseller.css">
-    <?php include ("../views/partials/header.php");?>
+	  <meta name="viewport" content="width=device-width, initial-scale=1">
+          <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+          <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+            <link rel="stylesheet" href="bootstrap.css">
+            <link rel="stylesheet" href="bootstrap.min.css">
+            <link rel="stylesheet" href="../css/wineseller.css">
+      <meta charset="utf-8">
 </head>
 <body>
+    <?php include ("../views/partials/header.php");?>
     <?php require_once '../views/partials/navbar.php'; ?>
 <div class="container">
 
@@ -96,10 +105,14 @@ $ads = Ad::all();
     <?php foreach($ads as $ad) : ?>
         <div class="large-4 medium-6 columns">
             <div class="post">
-                <h4>
+                <h3>
                     <a href="adsWineseller.show.php?id=<?= $ad['id']; ?>">
-                        <?= $ad['vendor']; ?> <h5><em>(Click to view this ad)</em></h5></a>
-                </h4>
+                        <?= $ad['title']; ?> <h5><em>(Click to view this ad)</em></h5></a>
+                </h3>
+                <p>
+                        <strong>Vendor: </strong>
+                        <?= $ad['vendor']; ?>
+                    </p>
                     <p><strong>Vendor Location: </strong>
                         <?= $ad['city']; ?>
                         <?= $ad['state']; ?>

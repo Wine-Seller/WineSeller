@@ -89,7 +89,8 @@ class Ad extends Model {
     // @TODO: Use prepared statements to ensure data security
 	{
 		$query = 'UPDATE ads 
-					SET vendor = :vendor,
+					SET title = :title,
+					vendor = :vendor,
 					city = :city,
 					state = :state,
 					zip = :zip,
@@ -102,6 +103,7 @@ class Ad extends Model {
 					image = :image,
 					WHERE id = :id';
 		$stmt = self::$dbc->prepare($query);
+		$stmt->bindValue(':title', $this->attributes['title'], PDO::PARAM_STR);
 		$stmt->bindValue(':vendor', $this->attributes['vendor'], PDO::PARAM_STR);
 		$stmt->bindValue(':city', $this->attributes['city'], PDO::PARAM_STR);
 		$stmt->bindValue(':state', $this->attributes['state'], PDO::PARAM_STR);
@@ -120,10 +122,11 @@ class Ad extends Model {
 	public function insert()
 	{
 		parent::dbConnect();
-		$query = 'INSERT INTO ads (vendor, city, state, zip, category, origin, style, vintage, price, description, image)
-								VALUES (:vendor, :city, :state, :zip, :category, :origin, :style, :vintage, :price, :description, :image);';
+		$query = 'INSERT INTO ads (title, vendor, city, state, zip, category, origin, style, vintage, price, description, image)
+								VALUES (:title, :vendor, :city, :state, :zip, :category, :origin, :style, :vintage, :price, :description, :image);';
 	
 		$stmt = parent::$dbc->prepare($query);
+		$stmt->bindValue(':title', $this->title, PDO::PARAM_STR);
 		$stmt->bindValue(':vendor', $this->vendor, PDO::PARAM_STR);
 		$stmt->bindValue(':city', $this->city, PDO::PARAM_STR);
 		$stmt->bindValue(':state', $this->state, PDO::PARAM_STR);

@@ -14,6 +14,7 @@ $dbc->exec($deleteRecords);
 
 $adsList = [
     [
+        'title'         => 'Vermentino White Wine 750 ml',
         'vendor'        => 'Bending Branch Winery',
         'city'          => 'Comfort',
         'state'         => 'Texas',
@@ -28,6 +29,7 @@ $adsList = [
     ],
 
     [
+        'title'         => 'Lafite Bordeaux Left Bank 750 ml',
         'vendor'        => 'Total Wine and More',
         'city'          => 'Atlanta',
         'state'         => 'Georgia',
@@ -43,6 +45,7 @@ $adsList = [
 
      [
 
+        'title'         => 'Coravin Wine Storage System',
         'vendor'        => 'Wine Enthusiast',
         'city'          => 'New York',
         'state'         => 'New York',
@@ -58,6 +61,7 @@ $adsList = [
 
      [
 
+        'title'          => 'Riedel Burgundy Glasses Set',
         'vendor'        => 'Crystal Classics',
         'city'          => 'Columbus',
         'state'         => 'Ohio',
@@ -76,10 +80,11 @@ $adsList = [
 /*Update park_seeder.php to use prepare() rather than exec() - MySQL caches this statement*/
        /* ()*/
 
-    $stmt = $dbc->prepare('INSERT INTO ads (vendor,city, state, zip, category, style, origin, vintage, price, description, image) 
-        VALUES (:vendor, :city, :state, :zip, :category, :style, :origin, :vintage, :price, :description, :image)');
+    $stmt = $dbc->prepare('INSERT INTO ads (title, vendor,city, state, zip, category, style, origin, vintage, price, description, image) 
+        VALUES (:title, :vendor, :city, :state, :zip, :category, :style, :origin, :vintage, :price, :description, :image)');
 
 foreach ($adsList as $list) {
+    $stmt->bindValue(':title', $list['title'], PDO::PARAM_STR);
     $stmt->bindValue(':vendor', $list['vendor'], PDO::PARAM_STR);
     $stmt->bindValue(':city', $list['city'], PDO::PARAM_STR);
     $stmt->bindValue(':state', $list['state'], PDO::PARAM_STR);
