@@ -15,6 +15,7 @@ $dbc->exec($dropTable);
 /*For ads table, create the query and assign to var*/
 $createTable = "CREATE TABLE ads (
     id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    title VARCHAR(100),
     vendor VARCHAR(100),
     city VARCHAR(100),
     state VARCHAR(100),

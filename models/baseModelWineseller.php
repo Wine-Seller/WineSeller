@@ -3,6 +3,7 @@
 require_once '../bootstrap.php';
 class Model 
 {
+
     protected static $dbc;
     protected static $table;
 
@@ -52,6 +53,26 @@ class Model
     // Magic setter to populate $data array - will reassign value of key if doesn't exist
         $this->attributes[$name] = $value;
     }
+
+
+
+        /*     * Persist the object to the database*/ 
+    public function save()
+    {
+        // Ensure there are attributes before attempting to save
+        if(isset($this->attributes)) {
+        // Perform the proper action - if the `id` is set, this is an update, if not it is a insert
+        // Ensure that update is properly handled with the id key
+            if (isset($this->attributes['id'])) {
+                $this->update();
+            } else {
+                $this->insert();
+            }
+        }
+        /*need for when add data, need new connection to save it*/
+        self::dbConnect();
+    }
+
 }
 
 ?>

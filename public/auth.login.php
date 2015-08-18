@@ -1,25 +1,25 @@
 <!-- Displays a login form for the user, calls the Auth class, starts a session,and redirects to site upon success -->
 
 <?php
-	// Require Classes and start a session for the page
+	// Bootstrap includes classes and starts a session for page
 	require_once '../bootstrap.php';
-	// If user is already logged in and gets to auth.login.php manually, redirect to profile page and don't run rest of PHP
+	// If user is already logged in, redirect to profile page
 	if(Auth::check()){
 		header("Location: users.show.php");
 		exit();
 	}
-	// If user is not logged in, ask for credentials
+	// If user is not logged in, ask for username and password; ternary 
 	$username = Input::has('username') ? Input::get('username') : '';
 	$password = Input::has('password') ? Input::get('password') : '';
 	$errorMessage = '';
 	// Verify username and password; if match, refresh and exit 
-	// If credentials fail, generate error message and footer.php re-reveals pop-up modal window. 
 	if(isset($_POST['login'])) {
 		Auth::attempt($username, $password);
 		if(isset($_SESSION['LOGGED_IN_USER'])){
-			// Page needs to reload in order for browser to register $_SESSION sent from modal
+			// Page needs to reload so browser can register $_SESSION sent from modal
 			header("Location: http://adlister.dev" . $_SERVER['PHP_SELF']);
 			exit();
+	// If login fails, send error message to user
 		} else {
 			$errorMessage = "Username or password is incorrect";
 		}
@@ -34,10 +34,18 @@
 <html>
 <head>
   <title>adsWineseller.create</title>
-  <link rel="stylesheet" href="../css/bootstrap.css"> 
-  <?php require_once '../views/partials/header.php'; ?>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+ 
+    <link rel="stylesheet" href="bootstrap.css">
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <link rel="stylesheet" href="../css/wineseller.css">
+     <meta charset="utf-8">
 </head>
 <body>
+  <?php require_once '../views/partials/header.php'; ?>
   <?php include ("../views/partials/navbar.php");?> 
 
 <h2 id="login">Log in to Wineseller</h2>
@@ -46,6 +54,8 @@
 	<input type="text" name="username" id="name" />
 	<label for="pswd">Password</label>
 	<input type="password" name="password" id="pswd" />
+	<!-- <label for="age">Password</label>
+	<input type="text" name="password" id="age" /> -->
 	<input type="submit" class="button small radius" name='login' value="Submit" />
 </form>
 </body>

@@ -1,20 +1,19 @@
 h1 {
 	font-size: 3em;
 	text-align: left;
-	text-indent: 2em;	
+	float: left;
 	color: #66000;
 }
 h3 {
 	color: #645A4C;
-	font-size: 3em;
+	font-size: 2em;
 }
 h4 {
 	color: #000;
+	text-align: center;
 }
 .header {
-	padding: 2em;
 	height: 20%;
-	/*border: 0.1em solid #645A4C;*/
 }
 
 .logo {
@@ -24,9 +23,9 @@ h4 {
 }
 
 .navbar {
-/*	light stone color: #B7AFA3;*/
-	/*background-color: #B7AFA3;*/
 	color: #66000;
+	float: left;
+	width: 100%;
 }
 
 .footer {
@@ -34,40 +33,29 @@ h4 {
     height: 50px;
     position: relative;
     text-align: center;
- 	}
+ }
 
 .linkBoxes {
 	color: #722f37;
+	float: left;
+	/*position: relative;*/
+	display: block;
 }
-body {
-	/*background-image: url("../img/brickwall.png");*/
-	/*background-image: url("../img/wineCellarBackground.jpg");*/
-	/*background-image: url("../img/filterEffectsWineCellar.png");*/
-	font-family: Book Antiqua, Helvetica Neue, Helvetica, Arial,sans-serif;
-	/*background-size: 50%;*/
-	/*background-repeat: no-repeat;*/
-	background-position: right;
-	/*margin-bottom: 320px;
-	margin-right: 100px;*/
-	padding: 3em;
-	/*background-color: #d9c4aa;*/
-	/*background-color: #722f37;*/
-	color: #722f37;
-	/*color: #darkgrey;*/
+.topRow .bottomRow {
+    margin-left: auto;
+    margin-right: auto;
 }
-.intro {
-	font-size: 3em;
-	font-style: bold;
-	color: #4F2412;
-	background-color: #F2E7D2;
-	border: 0.25em solid #b29366;
 
-	/*background-color: #988A7F;*/
-/*	background-color: #F2E7D2;
-*/
-/*#F2E7D2
-*/
-	/*#44413C*/
+body {
+	background-image: url("../img/brickwall.png");
+	font-family: Book Antiqua, Helvetica Neue, Helvetica, Arial,sans-serif;
+	background-position: center;
+	padding: 3em;
+	color: #722f37;
+}
+.form-group {
+	position: relative;
+	color: black;
 }
 .btn {
 	background-color: #722f37;
@@ -104,6 +92,20 @@ body {
 }
 .post {
 	color: black;
+}
+IMG.displayed {
+    display: block;
+    margin-left: auto;
+    margin-right: auto 
+}
+.insertAd {
+	margin-top: 10em;	
+}
+.adShow {
+	margin-top: 5em;
+}
+.showForm {
+	color: #000;
 }
 
 

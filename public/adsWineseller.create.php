@@ -5,7 +5,7 @@ require_once '../bootstrap.php';
 /*code to enable upload of images; can check for certain image types and only allow - can take a timestamp, string to time index 
 helps prevent duplicate uploads*/
 
-var_dump($_FILES);
+/*var_dump($_FILES);*/
 
 if($_FILES) {
     $uploads_directory = 'img/uploads/';
@@ -19,14 +19,15 @@ if($_FILES) {
 
 /*check if field has been submitted and input has correct value THEN make a new AD object
 - assign properties and try to save to DB- build out in php - require post input for all fields*/
-/*var_dump($_POST);
-*/
+
 if(!empty($_POST)) {
-  if (Input::has('vendor') && 
+  if (Input::has('title') && 
+    Input::has('vendor') &&
     Input::has('category') &&
     Input::has('price') &&
     Input::has('description')) {
       $ad = new Ad();
+      $ad->title = Input::get('title');
       $ad->vendor = Input::get('vendor');
       $ad->city = Input::get('city');
       $ad->state = Input::get('state');
@@ -42,20 +43,13 @@ if(!empty($_POST)) {
       
     // $stmt->execute();
 
-/*      $savedInput = ['title'=>'', 'description'=>'', 'price'=>'', 'contactName'=>'', 'contactEmail'=>'', 'contactPhone'=>''];
-      echo "<div class='row'>
-          <div class='large-12 columns'>
-            <h3>Your info was added to our cellar.</h3>
-            <a href='ads.index.php'>
-              <button type='button' class='btn'>View your new ad</button>
-            </a>
-          </div>
-        </div>";*/
-
-      /*   reset form and tell user their post was successfully added - send user to show list of index page to see add*/
+      /*   reset form and tell user their post was successfully added - send user to page which shows list of index page to see add*/
+      /*echo "<h3>Your info was added to our cellar. You will be redirected to the show page to view your new ad.</h3>";*/
+/*      a href="../adsWineseller.index.php"><img class = "displayed cellarImage" src="../img/visitWineCellar.jpg"><h4 class = "show Cellar">Visit the Cellar to View Your Ad</h4></img></a></div>;
+*/
       header("Location: /adsWineseller.index.php");
       exit();
-  }
+    }
 }
 
 
@@ -65,20 +59,27 @@ if(!empty($_POST)) {
 <!DOCTYPE html>
 <html>
 <head>
-  <title>adsWineseller.create - code to upload form with image</title>
-  <!-- <link rel="stylesheet" href="../css/bootstrap.css">  -->
-  <?php require_once '../views/partials/header.php'; ?>
+  <title>adsWineseller.create - upload form with image</title>
+
+  <link rel="stylesheet" href="bootstrap.css">
+  <link rel="stylesheet" href="../css/wineseller.css">
+
 </head>
 <body>
-  <?php include ("../views/partials/navbar.php");?> 
-  <h2>Insert a New Wineseller Ad</h2>
-<!-- <h3><?= $errorMessage ?></h3> -->
+  <?php require_once '../views/partials/header.php'; ?>
+
+  <?php require_once '../views/partials/navbar.php';?> 
 
 <div class="container">
-
-  <p>* Required field</p>
+  <div class="insertAd">
+  <h3>Insert a New Wineseller Ad</h3> * Required field
+</div>
   <form  class="form-horizontal" method="POST" action="adsWineseller.create.php" enctype="multipart/form-data">
     <div class="form-group">
+      <label for="title" class="col-md-6 control-label">* Product Title</label>
+          <div class="col-md-6">
+              <input type="text" class="form-control" name="title" id="title" placeholder="Enter a brief title for your product | required field">
+        </div>
         <label for="vendor" class="col-md-6 control-label">* Vendor Name</label>
           <div class="col-md-6">
               <input type="text" class="form-control" name="vendor" id="vendor" placeholder="Enter your vendor name | required field">
@@ -144,12 +145,6 @@ if(!empty($_POST)) {
         <div class="btn btn-default btn-file createAd">
             <input type="submit" class="btn btn-primary btn-lg">Create New Wineseller Ad</button>
         </div>
-
-</form>
-
-</body>
-</html>          
-      </div>
 
   </form>
 </div>
