@@ -1,4 +1,16 @@
 <?php
+require_once '../bootstrap.php';
+
+
+$query = "SELECT * FROM ads WHERE category = 'wine'";
+
+$stmt = $dbc->query($query);
+
+$wine = $stmt->fetch(PDO::FETCH_ASSOC);
+	
+print_r($stmt->fetchAll(PDO::FETCH_ASSOC));
+
+
 
 ?>
 
